@@ -24,7 +24,7 @@ class FisicalYearController extends Controller
      */
     public function create()
     {
-        return view('admin.setting.fisicalYear.crearte');
+        return view('admin.setting.fisicalYear.create');
     }
 
     /**

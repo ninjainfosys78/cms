@@ -38,13 +38,36 @@
                         <span class="hide-menu">Buttons</span>
                     </a>
                 </li>
+
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="./ui-alerts.html" aria-expanded="false">
-                        <span>
-                            <i class="ti ti-alert-circle"></i>
+                    <a class="sidebar-link flex justify-between items-center cursor-pointer" aria-expanded="false"
+                        onclick="toggleDropdown('settingsDropdown')">
+                        <span class="flex items-center">
+                            <i class="ti ti-settings"></i>
+                            <span class="hide-menu ml-2">Enterprises</span>
                         </span>
-                        <span class="hide-menu">Alerts</span>
+                        <i class="ti ti-chevron-down"></i>
                     </a>
+
+                    <!-- Enterprise Dropdown -->
+                    <ul id="settingsDropdown" class="ml-6 mt-2 space-y-2 hidden">
+
+                     <li>
+                            <a class="sidebar-link" href="{{ route('admin.enterprise.index') }}">
+                                <i class="ti ti-building"></i> <span>Enterprise</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="sidebar-link" href="{{ route('admin.enterprisePerson.index') }}">
+                                <i class="ti ti-user"></i> <span>Enterprise Person</span>
+                            </a>
+                        </li>
+                        {{-- <li>
+                            <a class="sidebar-link" href="{{ route('admin.grantProgram.index') }}">
+                                <i class="ti ti-brand-bunpo"></i> <span>Grant Programs</span>
+                            </a>
+                        </li> --}}
+                    </ul>
                 </li>
                 <li class="sidebar-item">
                     <a class="sidebar-link" href="./ui-card.html" aria-expanded="false">
