@@ -54,15 +54,46 @@
                         <span class="hide-menu">Card</span>
                     </a>
                 </li>
+                <!-- Farmers Dropdown Menu -->
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="./ui-forms.html" aria-expanded="false">
-                        <span>
-                            <i class="ti ti-file-description"></i>
+                    <a class="sidebar-link flex justify-between items-center cursor-pointer" aria-expanded="false"
+                        onclick="toggleDropdown('farmersDropdown')">
+                        <span class="flex items-center">
+                            <i class="ti ti-users"></i>
+                            <span class="hide-menu ml-2">Farmers</span>
                         </span>
-                        <span class="hide-menu">Forms</span>
+                        <i class="ti ti-chevron-down"></i>
                     </a>
-                </li>
 
+                    <!-- Fiscal Year Dropdown -->
+                    <ul id="farmersDropdown" class="ml-6 mt-2 space-y-2 hidden">
+                        <li>
+                            <a class="sidebar-link" href="{{ route('admin.farmerCooperatives.index') }}">
+                                <i class="ti ti-user"></i> <span>Farmer</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="sidebar-link" href="{{ route('admin.farmerCooperatives.index') }}">
+                                <i class="ti ti-heart-handshake"></i> <span>Farmer Cooperatives</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="sidebar-link" href="{{ route('admin.grantOffice.index') }}">
+                                <i class="ti ti-file-settings"></i> <span>Farmer Detail</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="sidebar-link" href="{{ route('admin.grantProgram.index') }}">
+                                <i class="ti ti-building"></i> <span>Farmer Enterprises</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="sidebar-link" href="{{ route('admin.grantProgram.index') }}">
+                                <i class="ti ti-users"></i> <span>Farmer Groups</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
 
 
                 <!-- Settings Dropdown Menu -->

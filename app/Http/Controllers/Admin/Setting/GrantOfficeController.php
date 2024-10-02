@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Admin\Setting;
 
+use Illuminate\Http\Request;
+use App\Models\Setting\GrantOffice;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Setting\GrantOffice\StoreGrantOfficeRequest;
 use App\Http\Requests\Setting\GrantOffice\UpdateGrantOfficeRequest;
-use App\Models\Setting\GrantOffice;
-use Illuminate\Http\Request;
 
 class GrantOfficeController extends Controller
 {
