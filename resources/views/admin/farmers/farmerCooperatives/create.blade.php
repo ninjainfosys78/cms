@@ -24,8 +24,7 @@
                                 </li>
                                 <li>
                                     <a href="#"
-                                        class="motion-reduce:transition-none-none text-black/60 transition duration-200 hover:text-black/80 hover:ease-in-out focus:text-black/80 active:text-black/80 motion-reduce:transition motion-reduce:transition-none ">fisical Year
-                                        List</a>
+                                        class="motion-reduce:transition-none-none text-black/60 transition duration-200 hover:text-black/80 hover:ease-in-out focus:text-black/80 active:text-black/80 motion-reduce:transition motion-reduce:transition-none ">Farmer Cooperatives List</a>
                                 </li>
                                 <li>
                                     <span class="mx-2 text-black/60">/</span>
@@ -39,8 +38,8 @@
                     </li>
                 </ul>
                 <div class="flex items-center gap-4">
-                    <a href="{{ route('admin.fisicalYear.index') }}"
-                        class="btn font-medium bg-blue-600 hover:bg-red-600 py-1 text-white" aria-current="page">Fisical Year List</a>
+                    <a href="{{ route('admin.farmerCooperatives.index') }}"
+                        class="btn font-medium bg-blue-600 hover:bg-red-600 py-1 text-white" aria-current="page">Farmer Cooperatives</a>
                 </div>
             </nav>
         </div>
@@ -49,16 +48,40 @@
                 <h6 class="text-lg text-gray-600 font-semibold">Forms</h6>
                 <div class="card">
                     <div class="card-body">
-                        <form class="flex flex-col gap-6" action="{{route('admin.fisicalYear.store')}}" method="POST"
+                        <form class="flex flex-col gap-6" action="{{route('admin.farmerCooperatives.store')}}" method="POST"
                               enctype="multipart/form-data">
                             @csrf
                             <div class="grid grid-cols-2 gap-4">
                                 <x-forms.TextInput
-                                    label="Fisical Year"
-                                    id="year"
-                                    name="year"
-                                    placeholder="Enter year 2080/81"
+                                    label="Farmer Cooperative Name"
+                                    id="name"
+                                    name="name"
+                                    placeholder="Enter name"
                                 />
+                                <x-forms.TextInput
+                                    label="Registration Number"
+                                    id="registration_no"
+                                    name="registration_no"
+                                    placeholder="Enter Registration number"
+                                />
+                                <x-forms.TextInput
+                                    label="Vat Pan"
+                                    id="vat_pan"
+                                    name="vat_pan"
+                                    placeholder="Enter vat pan"
+                                />
+
+
+                            </div>
+                            <!-- Province Dropdown -->
+                            <div>
+                                <label for="province">Select Province</label>
+                                <select wire:model="selectedProvince" id="province">
+                                    <option value="" selected>Select a Province</option>
+                                    @foreach($provinces as $province)
+                                        <option value="{{ $province->id }}">{{ $province->province }}</option>
+                                    @endforeach
+                                </select>
                             </div>
 
                             <div class="col-md-12">

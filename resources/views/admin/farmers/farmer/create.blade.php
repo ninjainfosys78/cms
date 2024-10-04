@@ -24,8 +24,7 @@
                                 </li>
                                 <li>
                                     <a href="#"
-                                        class="motion-reduce:transition-none-none text-black/60 transition duration-200 hover:text-black/80 hover:ease-in-out focus:text-black/80 active:text-black/80 motion-reduce:transition motion-reduce:transition-none ">fisical Year
-                                        List</a>
+                                        class="motion-reduce:transition-none-none text-black/60 transition duration-200 hover:text-black/80 hover:ease-in-out focus:text-black/80 active:text-black/80 motion-reduce:transition motion-reduce:transition-none ">Farmers List</a>
                                 </li>
                                 <li>
                                     <span class="mx-2 text-black/60">/</span>
@@ -39,8 +38,8 @@
                     </li>
                 </ul>
                 <div class="flex items-center gap-4">
-                    <a href="{{ route('admin.fisicalYear.index') }}"
-                        class="btn font-medium bg-blue-600 hover:bg-red-600 py-1 text-white" aria-current="page">Fisical Year List</a>
+                    <a href="{{ route('admin.farmerCooperatives.index') }}"
+                        class="btn font-medium bg-blue-600 hover:bg-red-600 py-1 text-white" aria-current="page">Farmers</a>
                 </div>
             </nav>
         </div>
@@ -49,16 +48,46 @@
                 <h6 class="text-lg text-gray-600 font-semibold">Forms</h6>
                 <div class="card">
                     <div class="card-body">
-                        <form class="flex flex-col gap-6" action="{{route('admin.fisicalYear.store')}}" method="POST"
+                        <form class="flex flex-col gap-6" action="{{route('admin.farmerCooperatives.store')}}" method="POST"
                               enctype="multipart/form-data">
                             @csrf
                             <div class="grid grid-cols-2 gap-4">
                                 <x-forms.TextInput
-                                    label="Fisical Year"
-                                    id="year"
-                                    name="year"
-                                    placeholder="Enter year 2080/81"
+                                    label="Full Name"
+                                    id="name"
+                                    name="name"
+                                    placeholder="Enter name"
                                 />
+                                <x-forms.PhotoInput
+                                    label="Photo"
+                                    id="photo"
+                                    name="photo"
+                                />
+                                <x-forms.TextInput
+                                    label="Phone Number"
+                                    id="phone_no"
+                                    name="phone_no"
+                                    placeholder="Enter phone no"
+                                />
+                                <x-forms.TextInput
+                                    label="Citizenship Number"
+                                    id="citizenship_no"
+                                    name="citizenship_no"
+                                    placeholder="Enter citizenship number"
+                                />
+                                <x-forms.TextInput
+                                    label="Id Card Number"
+                                    id="farmer_id_card_no"
+                                    name="farmer_id_card_no"
+                                    placeholder="Enter id card number"
+                                />
+                                <x-forms.TextInput
+                                    label="National ID Card no"
+                                    id="national_id_card_no"
+                                    name="national_id_card_no"
+                                    placeholder="Enter naitonal id card no"
+                                />
+
                             </div>
 
                             <div class="col-md-12">
