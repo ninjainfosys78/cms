@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('enterprise_people', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('enterprise_id')->comment('उद्यम')->constrained()->cascadeOnDelete();
+            $table->foreignId('enterprise_id')->comment('उद्यम')->nullable()->constrained()->cascadeOnDelete();
             $table->foreignId('fisical_year_id')->comment('आर्थिक वर्ष')->nullable()->constrained()->nullOnDelete();
             $table->string('name')->comment('नाम');
             $table->string('phone')->comment('फोन')->nullable();

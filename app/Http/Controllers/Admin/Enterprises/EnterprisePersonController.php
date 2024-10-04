@@ -23,7 +23,7 @@ class EnterprisePersonController extends Controller
      */
     public function create()
     {
-        return view('admin.enterprises.enterprisePerson.index');
+        return view('admin.enterprises.enterprisePerson.create');
     }
 
     /**

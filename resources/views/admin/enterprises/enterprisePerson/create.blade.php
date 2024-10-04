@@ -57,40 +57,41 @@
                                     label="Enterprise Name"
                                     id="name"
                                     name="name"
-                                    placeholder="Enter name"
+                                    placeholder="Enter  name"
                                 />
                                 <x-forms.TextInput
-                                    type="number"
+                                    type="tel"
                                     label="Phone"
                                     id="phone"
                                     name="phone"
-                                    placeholder="Enter phone"
+                                    placeholder="Enter  phone"
                                 />
-                                <x-forms.TextInput\
+                                <x-forms.TextInput
                                     type="email"
                                     label="Email"
                                     id="email"
                                     name="email"
-                                    placeholder="Enter Email"
+                                    placeholder="Enter  Email"
                                 />
-                                <x-forms.TextInput\
+                                <x-forms.TextInput
                                     label="Designation"
                                     id="designation"
                                     name="designation"
-                                    placeholder="Enter Designation"
+                                    placeholder="Enter  Designation"
                                 />
-                                <x-forms.TextInput\
+                                <x-forms.TextInput
                                     type="number"
                                     label="Position"
                                     id="position"
                                     name="position"
-                                    placeholder="Enter Position"
+                                    placeholder="Enter  Position"
+                                    min="1"
                                 />
-                                <x-forms.TextInput\
+                                <x-forms.TextInput
                                 label="Fisical Year"
                                 id="year"
                                 name="year"
-                                placeholder="Enter year 2080/81"
+                                placeholder="Enter  year  2080/81"
                                 />
 
 

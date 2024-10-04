@@ -43,7 +43,7 @@
                     <a class="sidebar-link flex justify-between items-center cursor-pointer" aria-expanded="false"
                         onclick="toggleDropdown('settingsDropdown')">
                         <span class="flex items-center">
-                            <i class="ti ti-settings"></i>
+                            <i class="ti ti-building"></i>
                             <span class="hide-menu ml-2">Enterprises</span>
                         </span>
                         <i class="ti ti-chevron-down"></i>

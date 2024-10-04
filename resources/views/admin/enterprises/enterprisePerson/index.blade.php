@@ -55,10 +55,14 @@
                                     <th>
                                         <h6 class="fw-semibold mb-0">S.No.</h6>
                                     </th>
+
                                     <th class="border-right-1">
                                         <h6 class="fw-semibold mb-0">Enterprise Person</h6>
                                     </th>
 
+                                    <th class="border-right-1">
+                                        <h6 class="fw-semibold mb-0">Designation</h6>
+                                    </th>
 
                                     <th class="border-bottom-0">
                                         <h6 class="fw-semibold mb-0">Action</h6>
@@ -66,7 +70,6 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @if ($enterprisePersons->isNotEmpty())
 
                                     @foreach ($enterprisePersons as $enterprisePerson)
                                         <tr>
@@ -94,7 +97,7 @@
                                             </td>
                                         </tr>
                                     @endforeach
-                                @endif
+
 
                             </tbody>
 
