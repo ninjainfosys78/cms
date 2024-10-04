@@ -66,32 +66,35 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($enterprisePersons as $enterprisePerson)
-                                    <tr>
-                                        <td class="border-b border-gray-200">
-                                            <h6 class=" mb-0">{{ $loop->iteration }}</h6>
-                                        </td>
-                                        <td class="border-b border-gray-200">
-                                            <h6 class=" mb-1">{{ $enterprisePerson->name ?? '' }}</h6>
-                                        </td>
-                                        <td class="border-b border-gray-200 gap-2 flex">
-                                            <a href="{{ route('admin.enterprisePerson.edit', $enterprisePerson) }}"><i
-                                                    class="ti ti-edit text-[18px] text-white hover:bg-blue-500 bg-green-500 p-2 rounded-full"></i></a>
-                                            <a href=""><i class=""></i></a>
+                                @if ($enterprisePersons->isNotEmpty())
+
+                                    @foreach ($enterprisePersons as $enterprisePerson)
+                                        <tr>
+                                            <td class="border-b border-gray-200">
+                                                <h6 class=" mb-0">{{ $loop->iteration }}</h6>
+                                            </td>
+                                            <td class="border-b border-gray-200">
+                                                <h6 class=" mb-1">{{ $enterprisePerson->name ?? '' }}</h6>
+                                            </td>
+                                            <td class="border-b border-gray-200 gap-2 flex">
+                                                <a href="{{ route('admin.enterprisePerson.edit', $enterprisePerson) }}"><i
+                                                        class="ti ti-edit text-[18px] text-white hover:bg-blue-500 bg-green-500 p-2 rounded-full"></i></a>
+                                                <a href=""><i class=""></i></a>
 
 
-                                            <form action="{{ route('admin.enterprisePerson.destroy', $enterprisePerson) }}"
-                                                method="POST" class="inline-block">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit">
-                                                    <i
-                                                        class="ti ti-trash ti ti-trash text-[18px] text-white hover:bg-blue-500 bg-red-500 p-2 rounded-full"></i>
-                                                </button>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                @endforeach
+                                                <form action="{{ route('admin.enterprisePerson.destroy', $enterprisePerson) }}"
+                                                    method="POST" class="inline-block">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit">
+                                                        <i
+                                                            class="ti ti-trash ti ti-trash text-[18px] text-white hover:bg-blue-500 bg-red-500 p-2 rounded-full"></i>
+                                                    </button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                @endif
 
                             </tbody>
 
