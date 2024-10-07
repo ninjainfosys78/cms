@@ -79,17 +79,13 @@
                 </li>
                 <!-- Farmers Dropdown Menu -->
                 <li class="sidebar-item">
-                    <a class="sidebar-link flex justify-between items-center cursor-pointer" aria-expanded="false"
-                        onclick="toggleDropdown('farmersDropdown')">
+                    <a class="sidebar-link flex justify-between items-center cursor-pointer" href="{{ route('admin.farmer.index') }}" aria-expanded="false">
                         <span class="flex items-center">
-                            <i class="ti ti-users"></i>
-                            <span class="hide-menu ml-2">Farmers</span>
+                            <i class="ti ti-user"></i>
+                            <span class="hide-menu ml-2">Farmer</span>
                         </span>
-                        <i class="ti ti-chevron-down"></i>
                     </a>
-
-                    <!-- Fiscal Year Dropdown -->
-                    <ul id="farmersDropdown" class="ml-6 mt-2 space-y-2 hidden">
+                    {{-- <ul id="farmersDropdown" class="ml-6 mt-2 space-y-2 hidden">
                         <li>
                             <a class="sidebar-link" href="{{ route('admin.farmerCooperatives.index') }}">
                                 <i class="ti ti-user"></i> <span>Farmer</span>
@@ -115,7 +111,7 @@
                                 <i class="ti ti-users"></i> <span>Farmer Groups</span>
                             </a>
                         </li>
-                    </ul>
+                    </ul> --}}
                 </li>
 
 
@@ -130,7 +126,7 @@
                         <i class="ti ti-chevron-down"></i>
                     </a>
 
-                    <!-- Fiscal Year Dropdown -->
+                    <!-- Fisical Year Dropdown -->
                     <ul id="settingsDropdown" class="ml-6 mt-2 space-y-2 hidden">
                         <li>
                             <a class="sidebar-link flex justify-between items-center cursor-pointer"
@@ -141,8 +137,6 @@
                                 </span>
                                 <i class="ti ti-chevron-down"></i>
                             </a>
-
-
                             <ul id="typesDropdown" class="ml-6 mt-2 space-y-2 hidden">
                                 <li>
                                     <a class="sidebar-link" href="{{ route('admin.affiliationType.index') }}">
@@ -166,8 +160,6 @@
                                 </li>
                             </ul>
                         </li>
-
-
                         <li>
                             <a class="sidebar-link" href="{{ route('admin.fisicalYear.index') }}">
                                 <i class="ti ti-calendar"></i> <span>Fisical Year</span>
@@ -233,8 +225,6 @@
     </div>
     <!-- End Sidebar scroll-->
 </aside>
-
-
 <script>
     function toggleDropdown(id) {
         var element = document.getElementById(id);

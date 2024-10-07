@@ -140,23 +140,23 @@ class Farmer extends Model
         return $this->belongsTo(User::class);
     }
 
-    // public function groups(): BelongsToMany
-    // {
-    //     return $this->belongsToMany(Group::class);
-    // }
+    public function groups(): BelongsToMany
+    {
+        return $this->belongsToMany(Group::class);
+    }
 
-    // public function enterprises(): BelongsToMany
-    // {
-    //     return $this->belongsToMany(Enterprise::class);
-    // }
+    public function enterprises(): BelongsToMany
+    {
+        return $this->belongsToMany(Enterprise::class);
+    }
 
-    // public function cooperatives(): BelongsToMany
-    // {
-    //     return $this->belongsToMany(Cooperative::class);
-    // }
+    public function cooperatives(): BelongsToMany
+    {
+        return $this->belongsToMany(Cooperative::class);
+    }
 
-    // public function grantDetails(): MorphMany
-    // {
-    //     return $this->morphMany(GrantDetail::class, 'model');
-    // }
+    public function grantDetails(): MorphMany
+    {
+        return $this->morphMany(GrantDetail::class, 'model');
+    }
 }

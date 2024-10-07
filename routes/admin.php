@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Models\Setting\Types\GrantType;
 use App\Models\Enterprises\EnterprisePerson;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\Farmers\FarmerController;
 use App\Http\Controllers\Admin\Setting\FisicalYearController;
 use App\Http\Controllers\Admin\Setting\GrantOfficeController;
 use App\Http\Controllers\Admin\Setting\GrantProgramController;
@@ -38,4 +39,7 @@ Route::group(['prefix=>enterprises'], function () {
     Route::resource('enterpriseType', EnterpriseTypeController::class);
     Route::resource('grantType', GrantTypeController::class);
 
+});
+Route::group(['prefix=>farmers'], function () {
+    Route::resource('farmer', FarmerController::class);
 });

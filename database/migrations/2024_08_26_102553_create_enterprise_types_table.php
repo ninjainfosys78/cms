@@ -6,23 +6,17 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
-    public function up(): void
+    public function up()
     {
         Schema::create('enterprise_types', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->softDeletes();
+            $table->string('title')->comment('उद्यम प्रकारहरू');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
+    public function down()
     {
         Schema::dropIfExists('enterprise_types');
     }

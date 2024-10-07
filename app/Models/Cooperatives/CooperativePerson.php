@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Models\Enterprises;
+namespace App\Models\Cooperatives;
 
+use App\Models\Setting\fisicalYear;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class EnterprisePerson extends Model
+class CooperativePerson extends Model
 {
     use HasFactory, SoftDeletes;
 
@@ -32,14 +33,13 @@ class EnterprisePerson extends Model
         'position' => 'integer',
     ];
 
-    public function enterprise(): BelongsTo
+    public function cooperative(): BelongsTo
     {
-        return $this->belongsTo(Enterprise::class);
+        return $this->belongsTo(Cooperative::class);
     }
 
-    // public function fisicalYear(): BelongsTo
-    // {
-    //     return $this->belongsTo(fisicalYear::class);
-    // }
+    public function fisicalYear(): BelongsTo
+    {
+        return $this->belongsTo(fisicalYear::class);
+    }
 }
-

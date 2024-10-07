@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Models\Enterprises;
+namespace App\Models\Groups;
 
+use App\Models\Setting\fisicalYear;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class EnterprisePerson extends Model
+class GroupPerson extends Model
 {
     use HasFactory, SoftDeletes;
 
@@ -18,7 +19,7 @@ class EnterprisePerson extends Model
     ];
 
     protected $fillable = [
-        'cooperative_id',
+        'group_id',
         'fisical_year_id',
         'name',
         'phone',
@@ -32,14 +33,13 @@ class EnterprisePerson extends Model
         'position' => 'integer',
     ];
 
-    public function enterprise(): BelongsTo
+    public function group(): BelongsTo
     {
-        return $this->belongsTo(Enterprise::class);
+        return $this->belongsTo(Group::class);
     }
 
-    // public function fisicalYear(): BelongsTo
-    // {
-    //     return $this->belongsTo(fisicalYear::class);
-    // }
+    public function fisicalYear(): BelongsTo
+    {
+        return $this->belongsTo(fisicalYear::class);
+    }
 }
-

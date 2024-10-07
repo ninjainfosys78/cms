@@ -23,7 +23,7 @@ class UpdateEnterprisePersonRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'fiscal_year_id' => ['nullable', Rule::exists('fiscal_years', 'id')->withoutTrashed()],
+            'fisical_year_id' => ['nullable', Rule::exists('fisical_years', 'id')->withoutTrashed()],
             'name' => ['nullable', 'string', 'max:255'],
             'phone' => ['nullable'],
             'email' => ['nullable', 'email'],

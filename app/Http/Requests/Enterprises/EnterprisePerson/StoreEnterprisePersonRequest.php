@@ -23,7 +23,7 @@ class StoreEnterprisePersonRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'fiscal_year_id' => ['required', Rule::exists('fiscal_years', 'id')->withoutTrashed()],
+            'fisical_year_id' => ['required', Rule::exists('fisical_years', 'id')->withoutTrashed()],
             'name' => ['required', 'string', 'max:255'],
             'phone' => ['nullable'],
             'email' => ['nullable', 'email'],

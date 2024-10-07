@@ -38,8 +38,8 @@
                     </li>
                 </ul>
                 <div class="flex items-center gap-4">
-                    <a href="{{ route('admin.farmerCooperatives.index') }}"
-                        class="btn font-medium bg-blue-600 hover:bg-red-600 py-1 text-white" aria-current="page">Farmers</a>
+                    <a href="{{ route('admin.farmer.index') }}"
+                        class="btn font-medium bg-blue-600 hover:bg-red-600 py-1 text-white" aria-current="page">Farmers List</a>
                 </div>
             </nav>
         </div>
@@ -48,45 +48,127 @@
                 <h6 class="text-lg text-gray-600 font-semibold">Forms</h6>
                 <div class="card">
                     <div class="card-body">
-                        <form class="flex flex-col gap-6" action="{{route('admin.farmerCooperatives.store')}}" method="POST"
+                        @if ($errors->any())
+                                    <div class="alert alert-danger">
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
+                        <form class="flex flex-col gap-6" action="{{route('admin.farmer.store')}}" method="POST"
                               enctype="multipart/form-data">
                             @csrf
                             <div class="grid grid-cols-2 gap-4">
                                 <x-forms.TextInput
-                                    label="Full Name"
-                                    id="name"
-                                    name="name"
-                                    placeholder="Enter name"
+                                    label="First Name"
+                                    id="first_name"
+                                    name="first_name"
+                                    placeholder="Enter first name"
+                                />
+                                <x-forms.TextInput
+                                    label="Middle Name"
+                                    id="middle_name"
+                                    name="middle_name"
+                                    placeholder="Enter last name"
+                                />
+                                <x-forms.TextInput
+                                    label="Last Name"
+                                    id="last_name"
+                                    name="last_name"
+                                    placeholder="Enter last name"
                                 />
                                 <x-forms.PhotoInput
-                                    label="Photo"
-                                    id="photo"
-                                    name="photo"
+                                label="Photo"
+                                id="photo"
+                                name="photo"
+                                />
+                                <x-forms.SelectInput
+                                    label="Gender"
+                                    id="gender"
+                                    name="gender"
+                                    :options="\App\Enums\Gender::cases()"
+                                />
+
+                                {{-- <x-forms.SelectInput
+                                    label="Gender"
+                                    id="gender"
+                                    name="gender"
+                                /> --}}
+                                <x-forms.SelectInput
+                                    label="Relationship Status"
+                                    id="relationship_status"
+                                    name="relationship_status"
+                                    :options="\App\Enums\RelationshipStatus::cases()"
                                 />
                                 <x-forms.TextInput
-                                    label="Phone Number"
-                                    id="phone_no"
-                                    name="phone_no"
-                                    placeholder="Enter phone no"
+                                    label="Spouse Name"
+                                    id="spouse_name"
+                                    name="spouse_name"
+                                    placeholder="Enter spouse name"
                                 />
                                 <x-forms.TextInput
+                                    label="Father Name"
+                                    id="father_name"
+                                    name="father_name"
+                                    placeholder="Enter Father name"
+                                />
+                                <x-forms.TextInput
+                                    label="Grandfather Name"
+                                    id="grandfather_name"
+                                    name="grandfather_name"
+                                    placeholder="Enter Grandfather name"
+                                /><x-forms.TextInput
                                     label="Citizenship Number"
                                     id="citizenship_no"
                                     name="citizenship_no"
                                     placeholder="Enter citizenship number"
                                 />
                                 <x-forms.TextInput
-                                    label="Id Card Number"
+                                    label="Farmer ID Card Number"
                                     id="farmer_id_card_no"
                                     name="farmer_id_card_no"
                                     placeholder="Enter id card number"
                                 />
                                 <x-forms.TextInput
-                                    label="National ID Card no"
+                                    label="National ID Card Number"
                                     id="national_id_card_no"
                                     name="national_id_card_no"
-                                    placeholder="Enter naitonal id card no"
+                                    placeholder="Enter national id card number"
                                 />
+                                <x-forms.TextInput
+                                    label="Phone Number"
+                                    id="phone_no"
+                                    name="phone_no"
+                                    placeholder="Enter Phone number"
+                                />
+                                <x-forms.SelectInput
+                                    label="Relationship Status"
+                                    id="relationship_status"
+                                    name="relationship_status"
+                                    :options="$options"
+                                />
+
+                                <x-forms.TextInput
+                                    label="Ward No"
+                                    id="ward_no"
+                                    name="ward_no"
+                                    placeholder="Enter Ward No"
+                                />
+                                <x-forms.TextInput
+                                    label="Village"
+                                    id="village"
+                                    name="village"
+                                    placeholder="Enter Village"
+                                />
+                                <x-forms.TextInput
+                                    label="Tole"
+                                    id="tole"
+                                    name="tole"
+                                    placeholder="Enter tole"
+                                />
+
 
                             </div>
 
@@ -100,11 +182,6 @@
                 </div>
             </div>
         </div>
-
-
-
-
-
 
     </div>
 @endsection
