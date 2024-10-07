@@ -144,9 +144,9 @@
                                     placeholder="Enter Phone number"
                                 />
                                 <x-forms.SelectInput
-                                    label="Relationship Status"
-                                    id="relationship_status"
-                                    name="relationship_status"
+                                    label="Select Province"
+                                    id="province_id"
+                                    name="province_id"
                                     :options="$options"
                                 />
 
