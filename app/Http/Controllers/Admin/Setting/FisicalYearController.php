@@ -34,7 +34,7 @@ class FisicalYearController extends Controller
     {
         FisicalYear::create($request->validated());
         toast('Fisical year added Successfully','success');
-        return to_route('admin.fisicalyear.create');
+        return to_route('admin.fisicalYear.create');
     }
 
     /**

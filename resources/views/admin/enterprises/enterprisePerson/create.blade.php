@@ -54,7 +54,7 @@
                             @csrf
                             <div class="grid grid-cols-2 gap-4">
                                 <x-forms.TextInput
-                                    label="Enterprise Name"
+                                    label="Name"
                                     id="name"
                                     name="name"
                                     placeholder="Enter  name"
@@ -87,11 +87,12 @@
                                     placeholder="Enter  Position"
                                     min="1"
                                 />
-                                <x-forms.TextInput
-                                label="Fisical Year"
-                                id="year"
-                                name="year"
-                                placeholder="Enter  year  2080/81"
+                                {{-- {{$options}} --}}
+                                <x-forms.SelectInput
+                                label="Select Fisical Year"
+                                id="fisical_year_id"
+                                name="fisical_year_id"
+                                :options="$options"
                                 />
 
 

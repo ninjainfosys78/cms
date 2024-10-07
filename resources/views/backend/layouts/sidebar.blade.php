@@ -62,20 +62,34 @@
                                 <i class="ti ti-user"></i> <span>Enterprise Person</span>
                             </a>
                         </li>
-                        {{-- <li>
-                            <a class="sidebar-link" href="{{ route('admin.grantProgram.index') }}">
-                                <i class="ti ti-brand-bunpo"></i> <span>Grant Programs</span>
-                            </a>
-                        </li> --}}
+
                     </ul>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="./ui-card.html" aria-expanded="false">
-                        <span>
-                            <i class="ti ti-cards"></i>
+                    <a class="sidebar-link flex justify-between items-center cursor-pointer" aria-expanded="false"
+                        onclick="toggleDropdown('groupsDropdown')">
+                        <span class="flex items-center">
+                            <i class="ti ti-users"></i>
+                            <span class="hide-menu ml-2">Groups</span>
                         </span>
-                        <span class="hide-menu">Card</span>
+                        <i class="ti ti-chevron-down"></i>
                     </a>
+
+                    <!-- Groups Dropdown -->
+                    <ul id="groupsDropdown" class="ml-6 mt-2 space-y-2 hidden">
+
+                     <li>
+                            <a class="sidebar-link" href="{{ route('admin.enterprise.index') }}">
+                                <i class="ti ti-building"></i> <span>Group</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="sidebar-link" href="{{ route('admin.groupPerson.index') }}">
+                                <i class="ti ti-user"></i> <span>Group Person</span>
+                            </a>
+                        </li>
+
+                    </ul>
                 </li>
                 <!-- Farmers Dropdown Menu -->
                 <li class="sidebar-item">

@@ -24,8 +24,8 @@
                                 </li>
                                 <li>
                                     <a href="#"
-                                        class="motion-reduce:transition-none-none text-black/60 transition duration-200 hover:text-black/80 hover:ease-in-out focus:text-black/80 active:text-black/80 motion-reduce:transition motion-reduce:transition-none ">Enterprise
-                                        Person List</a>
+                                        class="motion-reduce:transition-none-none text-black/60 transition duration-200 hover:text-black/80 hover:ease-in-out focus:text-black/80 active:text-black/80 motion-reduce:transition motion-reduce:transition-none ">Group
+                                        People List</a>
                                 </li>
                                 <li>
                                     <span class="mx-2 text-black/60">/</span>
@@ -39,7 +39,7 @@
                     </li>
                 </ul>
                 <div class="flex items-center gap-4">
-                    <a href="{{ route('admin.enterprisePerson.create') }}"
+                    <a href="{{ route('admin.groupPerson.create') }}"
                         class="btn font-medium bg-blue-600 hover:bg-red-600 py-2 text-white" aria-current="page">Add New</a>
                 </div>
             </nav>
@@ -48,7 +48,7 @@
         <div class="col-lg-12 overflow-hidden d-flex align-items-stretch">
             <div class="card w-100">
                 <div class="card-body p-4">
-                    <h5 class="card-title fw-semibold mb-4">Enterprise Persons</h5>
+                    <h5 class="card-title fw-semibold mb-4">Group People</h5>
                     <div class="table-responsive">
                         <table class="table text-nowrap mb-0 align-middle">
                             <thead class="text-dark fs-4">
@@ -72,27 +72,27 @@
                             </thead>
                             <tbody>
 
-                                @foreach ($enterprisePeople as $enterprisePerson)
+                                @foreach ($groupPeople as $groupPerson)
                                     <tr>
                                         <td class="border-b border-gray-200">
                                             <h6 class=" mb-0">{{ $loop->iteration }}</h6>
                                         </td>
 
                                         <td class="border-b border-gray-200">
-                                            <h6 class=" mb-1">{{ $enterprisePerson->name ?? '' }}</h6>
+                                            <h6 class=" mb-1">{{ $groupPerson->name ?? '' }}</h6>
                                         </td>
 
                                         <td class="border-b border-gray-200">
-                                            <h6 class=" mb-1">{{ $enterprisePerson->designation ?? '' }}</h6>
+                                            <h6 class=" mb-1">{{ $groupPerson->designation ?? '' }}</h6>
                                         </td>
 
                                         <td class="border-b border-gray-200 gap-2 flex">
-                                            <a href="{{ route('admin.enterprisePerson.edit', $enterprisePerson) }}"><i
+                                            <a href="{{ route('admin.groupPerson.edit', $groupPerson) }}"><i
                                                     class="ti ti-edit text-[18px] text-white hover:bg-blue-500 bg-green-500 p-2 rounded-full"></i></a>
                                             <a href=""><i class=""></i></a>
 
 
-                                            <form action="{{ route('admin.enterprisePerson.destroy', $enterprisePerson) }}"
+                                            <form action="{{ route('admin.groupPerson.destroy', $groupPerson) }}"
                                                 method="POST" class="inline-block">
                                                 @csrf
                                                 @method('DELETE')
@@ -110,7 +110,7 @@
 
                         </table>
                         {{-- <div class="mt-4">
-                            {{ $enterprisePersons->onEachSide(5)->links('vendor.pagination.bootstrap-5') }}
+                            {{ $groupPersons->onEachSide(5)->links('vendor.pagination.bootstrap-5') }}
                         </div> --}}
                     </div>
                 </div>

@@ -49,17 +49,17 @@
                 <h6 class="text-lg text-gray-600 font-semibold">Forms</h6>
                 <div class="card">
                     <div class="card-body">
-                        <form class="flex flex-col gap-6" action="{{route('admin.enterprisePerson.update',$enterprisePerson)}}" method="POST"
+                        <form class="flex flex-col gap-6" action="{{route('admin.groupPerson.update',$groupPerson)}}" method="POST"
                               enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
                             <div class="grid grid-cols-2 gap-4">
                                 <x-forms.TextInput
-                                    label="Enterprise Name"
+                                    label="Name"
                                     id="name"
                                     name="name"
                                     placeholder="Enter name"
-                                    value="{{old('name',$enterprisePerson->name)}}"
+                                    value="{{old('name',$groupPerson->name)}}"
                                 />
                                 <x-forms.TextInput
                                     type="tel"
@@ -67,7 +67,7 @@
                                     id="phone"
                                     name="phone"
                                     placeholder="Enter phone"
-                                    value="{{old('name',$enterprisePerson->phone)}}"
+                                    value="{{old('name',$groupPerson->phone)}}"
                                 />
                                 <x-forms.TextInput
                                     type="email"
@@ -75,14 +75,14 @@
                                     id="email"
                                     name="email"
                                     placeholder="Enter Email"
-                                    value="{{old('name',$enterprisePerson->email)}}"
+                                    value="{{old('name',$groupPerson->email)}}"
                                 />
                                 <x-forms.TextInput
                                     label="Designation"
                                     id="designation"
                                     name="designation"
                                     placeholder="Enter Designation"
-                                    value="{{old('name',$enterprisePerson->designation)}}"
+                                    value="{{old('name',$groupPerson->designation)}}"
                                 />
                                 <x-forms.TextInput
                                     type="number"
@@ -90,7 +90,7 @@
                                     id="position"
                                     name="position"
                                     placeholder="Enter Position"
-                                    value="{{old('name',$enterprisePerson->position)}}"
+                                    value="{{old('name',$groupPerson->position)}}"
 
                                 />
                                 <x-forms.SelectInput
@@ -98,7 +98,15 @@
                                 id="fisical_year_id"
                                 name="fisical_year_id"
                                 :options="$options"
-                                value="{{old('name',$enterprisePerson->fisical_year_id)}}"
+                                value="{{old('name',$groupPerson->fisical_year_id)}}"
+
+                                />
+                                <x-forms.SelectInput
+                                label="Select Group"
+                                id="group_id"
+                                name="group_id"
+                                :options="$options"
+                                value="{{old('name',$groupPerson->group_id)}}"
 
                                 />
 
