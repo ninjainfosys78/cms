@@ -52,7 +52,7 @@
                     <!-- Enterprise Dropdown -->
                     <ul id="enterprisesDropdown" class="ml-6 mt-2 space-y-2 hidden">
 
-                     <li>
+                        <li>
                             <a class="sidebar-link" href="{{ route('admin.enterprise.index') }}">
                                 <i class="ti ti-building"></i> <span>Enterprise</span>
                             </a>
@@ -75,10 +75,10 @@
                         <i class="ti ti-chevron-down"></i>
                     </a>
 
-                    <!-- Enterprise Dropdown -->
+                    <!-- Cooperative Dropdown -->
                     <ul id="cooperativesDropdown" class="ml-6 mt-2 space-y-2 hidden">
 
-                     <li>
+                        <li>
                             <a class="sidebar-link" href="{{ route('admin.cooperative.index') }}">
                                 <i class="ti ti-building"></i> <span>Cooperative</span>
                             </a>
@@ -91,9 +91,11 @@
                     </ul>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="./ui-card.html" aria-expanded="false">
-                        <span>
-                            <i class="ti ti-cards"></i>
+                    <a class="sidebar-link flex justify-between items-center cursor-pointer" aria-expanded="false"
+                        onclick="toggleDropdown('groupsDropdown')">
+                        <span class="flex items-center">
+                            <i class="ti ti-users"></i>
+                            <span class="hide-menu ml-2">Groups</span>
                         </span>
                         <i class="ti ti-chevron-down"></i>
                     </a>
@@ -101,7 +103,7 @@
                     <!-- Groups Dropdown -->
                     <ul id="groupsDropdown" class="ml-6 mt-2 space-y-2 hidden">
 
-                     <li>
+                        <li>
                             <a class="sidebar-link" href="{{ route('admin.group.index') }}">
                                 <i class="ti ti-building"></i> <span>Group</span>
                             </a>
@@ -116,7 +118,8 @@
                 </li>
                 <!-- Farmers Dropdown Menu -->
                 <li class="sidebar-item">
-                    <a class="sidebar-link flex justify-between items-center cursor-pointer" href="{{ route('admin.farmer.index') }}" aria-expanded="false">
+                    <a class="sidebar-link flex justify-between items-center cursor-pointer"
+                        href="{{ route('admin.farmer.index') }}" aria-expanded="false">
                         <span class="flex items-center">
                             <i class="ti ti-user"></i>
                             <span class="hide-menu ml-2">Farmer</span>
