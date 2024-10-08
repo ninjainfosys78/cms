@@ -6,25 +6,24 @@
                 <ul class="icon-nav flex items-center gap-4">
                     <li class="relative xl:hidden">
                         <a class="text-xl  icon-hover cursor-pointer text-heading" id="headerCollapse"
-                            data-hs-overlay="#application-sidebar-brand" aria-controls="application-sidebar-brand"
-                            aria-label="Toggle navigation" href="javascript:void(0)">
+                           data-hs-overlay="#application-sidebar-brand" aria-controls="application-sidebar-brand"
+                           aria-label="Toggle navigation" href="javascript:void(0)">
                             <i class="ti ti-menu-2 relative z-1"></i>
                         </a>
                     </li>
-
                     <li class="relative">
                         <nav class="w-full rounded-md" aria-label="breadcrumb">
                             <ol class="list-reset ms-2 flex">
                                 <li>
                                     <a href="{{ route('admin.dashboard') }}"
-                                        class="motion-reduce:transition-none-none text-black/60 transition duration-200 hover:text-black/80 hover:ease-in-out focus:text-black/80 active:text-black/80 motion-reduce:transition motion-reduce:transition-none ">Home</a>
+                                       class="motion-reduce:transition-none-none text-black/60 transition duration-200 hover:text-black/80 hover:ease-in-out focus:text-black/80 active:text-black/80 motion-reduce:transition motion-reduce:transition-none ">Home</a>
                                 </li>
                                 <li>
                                     <span class="mx-2 text-black/60">/</span>
                                 </li>
                                 <li>
                                     <a href="#"
-                                        class="motion-reduce:transition-none-none text-black/60 transition duration-200 hover:text-black/80 hover:ease-in-out focus:text-black/80 active:text-black/80 motion-reduce:transition motion-reduce:transition-none ">Cooperative
+                                       class="motion-reduce:transition-none-none text-black/60 transition duration-200 hover:text-black/80 hover:ease-in-out focus:text-black/80 active:text-black/80 motion-reduce:transition motion-reduce:transition-none ">Cooperative
                                         List</a>
                                 </li>
                                 <li>
@@ -32,7 +31,7 @@
                                 </li>
                                 <li>
                                     <a href="#"
-                                        class="motion-reduce:transition-none-none text-black/60 transition duration-200 hover:text-black/80 hover:ease-in-out focus:text-black/80 active:text-black/80 motion-reduce:transition motion-reduce:transition-none">Data</a>
+                                       class="motion-reduce:transition-none-none text-black/60 transition duration-200 hover:text-black/80 hover:ease-in-out focus:text-black/80 active:text-black/80 motion-reduce:transition motion-reduce:transition-none">Data</a>
                                 </li>
                             </ol>
                         </nav>
@@ -40,7 +39,8 @@
                 </ul>
                 <div class="flex items-center gap-4">
                     <a href="{{ route('admin.fisicalYear.index') }}"
-                        class="btn font-medium bg-blue-600 hover:bg-red-600 py-1 text-white" aria-current="page">Cooperative List</a>
+                       class="btn font-medium bg-blue-600 hover:bg-red-600 py-1 text-white" aria-current="page">Cooperative
+                        List</a>
                 </div>
             </nav>
         </div>
@@ -102,7 +102,6 @@
                                     placeholder="Enter province_id 2080/81"
                                 />
                             </div>
-
                             <div class="col-md-12">
                                 <button type="submit" class="btn btn-sm btn-primary">
                                     Submit
@@ -113,11 +112,5 @@
                 </div>
             </div>
         </div>
-
-
-
-
-
-
     </div>
 @endsection
