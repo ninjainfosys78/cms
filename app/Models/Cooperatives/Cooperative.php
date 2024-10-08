@@ -2,34 +2,27 @@
 
 namespace App\Models\Cooperatives;
 
-use App\Models\Address\District;
-use App\Models\Address\LocalBody;
-use App\Models\Address\Province;
-use App\Models\Farmers\Farmer;
-use App\Models\Grants\GrantDetail;
-use App\Models\Setting\Type\Affiliation;
-use App\Models\Setting\Type\CooperativeType;
 use App\Models\User;
 use App\Traits\GetAllColumns;
+use App\Models\Farmers\Farmer;
+use App\Models\Address\District;
+use App\Models\Address\Province;
 use App\Traits\QueryFilterTrait;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Address\LocalBody;
+use App\Models\Grants\GrantDetail;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\MorphMany;
+use App\Models\Setting\Types\AffiliationType;
+use App\Models\Setting\Types\CooperativeType;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Cooperative extends Model
 {
     use HasFactory, SoftDeletes, QueryFilterTrait,GetAllColumns;
-
-    protected $dates = [
-        'registration_date',
-        'created_at',
-        'updated_at',
-        'deleted_at',
-    ];
 
     protected $fillable = [
         'unique_id',
@@ -47,15 +40,6 @@ class Cooperative extends Model
         'village',
         'tole',
         'user_id',
-    ];
-
-    protected $casts = [
-        'cooperative_type_id' => 'integer',
-        'affiliation_id' => 'integer',
-        'province_id' => 'integer',
-        'district_id' => 'integer',
-        'local_body_id' => 'integer',
-        'ward_no' => 'integer',
     ];
 
     public function scopeFilter($query, $param = [])
@@ -90,7 +74,7 @@ class Cooperative extends Model
 
     public function affiliation(): BelongsTo
     {
-        return $this->belongsTo(Affiliation::class);
+        return $this->belongsTo(AffiliationType::class);
     }
 
     public function province(): BelongsTo

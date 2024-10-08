@@ -67,10 +67,33 @@
                 </li>
                 <li class="sidebar-item">
                     <a class="sidebar-link flex justify-between items-center cursor-pointer" aria-expanded="false"
-                        onclick="toggleDropdown('groupsDropdown')">
+                        onclick="toggleDropdown('cooperativesDropdown')">
                         <span class="flex items-center">
-                            <i class="ti ti-users"></i>
-                            <span class="hide-menu ml-2">Groups</span>
+                            <i class="ti ti-heart-handshake"></i>
+                            <span class="hide-menu ml-2">Cooperatives</span>
+                        </span>
+                        <i class="ti ti-chevron-down"></i>
+                    </a>
+
+                    <!-- Enterprise Dropdown -->
+                    <ul id="cooperativesDropdown" class="ml-6 mt-2 space-y-2 hidden">
+
+                     <li>
+                            <a class="sidebar-link" href="{{ route('admin.cooperative.index') }}">
+                                <i class="ti ti-building"></i> <span>Cooperative</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="sidebar-link" href="{{ route('admin.cooperativePerson.index') }}">
+                                <i class="ti ti-user"></i> <span>Cooperative Person</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="./ui-card.html" aria-expanded="false">
+                        <span>
+                            <i class="ti ti-cards"></i>
                         </span>
                         <i class="ti ti-chevron-down"></i>
                     </a>

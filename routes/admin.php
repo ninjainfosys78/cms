@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\Setting\GrantOfficeController;
 use App\Http\Controllers\Admin\Setting\GrantProgramController;
 use App\Http\Controllers\Admin\Enterprises\EnterpriseController;
 use App\Http\Controllers\Admin\Setting\Types\GrantTypeController;
+use App\Http\Controllers\Admin\Cooperatives\CooperativeController;
 use App\Http\Controllers\Admin\Farmers\FarmerCooperativesController;
 use App\Http\Controllers\Admin\Enterprises\EnterprisePersonController;
 use App\Http\Controllers\Admin\Groups\GroupController;
@@ -17,6 +18,7 @@ use App\Http\Controllers\Admin\Groups\GroupPersonController;
 use App\Http\Controllers\Admin\Setting\Types\EnterpriseTypeController;
 use App\Http\Controllers\Admin\Setting\Types\AffiliationTypeController;
 use App\Http\Controllers\Admin\Setting\Types\CooperativeTypeController;
+use App\Http\Controllers\Admin\Cooperatives\CooperativePersonController;
 
 Route::get('/dashboard',[DashboardController::class,'_invoke'])->name('dashboard');
 
@@ -38,9 +40,9 @@ Route::group(['prefix' => 'settings'], function () {
 Route::group(['prefix=>enterprises'], function () {
     Route::resource('enterprise', EnterpriseController::class);
     Route::resource('enterprisePerson', EnterprisePersonController::class);
-    Route::resource('enterpriseType', EnterpriseTypeController::class);
 
 });
+
 Route::group(['prefix=>farmers'], function () {
     Route::resource('farmer', FarmerController::class);
 });
@@ -50,3 +52,7 @@ Route::group(['prefix=>groups'], function () {
     Route::resource('groupPerson', GroupPersonController::class);
 });
 
+Route::group(['prefix=>cooperatives'], function () {
+    Route::resource('cooperative', CooperativeController::class);
+    Route::resource('cooperativePerson', CooperativePersonController::class);
+});

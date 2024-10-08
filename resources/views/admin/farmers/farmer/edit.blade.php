@@ -66,18 +66,21 @@
                                     id="first_name"
                                     name="first_name"
                                     placeholder="Enter first name"
+                                    value = "{{ old('first_name',$farmer->first_name) }}"
                                 />
                                 <x-forms.TextInput
                                     label="Middle Name"
                                     id="middle_name"
                                     name="middle_name"
-                                    placeholder="Enter last name"
+                                    placeholder="Enter middle name"
+                                    value = "{{ old('middle_name',$farmer->middle_name) }}"
                                 />
                                 <x-forms.TextInput
                                     label="Last Name"
                                     id="last_name"
                                     name="last_name"
                                     placeholder="Enter last name"
+                                    value = "{{ old('last_name',$farmer->last_name) }}"
                                 />
                                 <x-forms.PhotoInput
                                 label="Photo"
