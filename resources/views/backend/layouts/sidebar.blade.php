@@ -62,11 +62,7 @@
                                 <i class="ti ti-user"></i> <span>Enterprise Person</span>
                             </a>
                         </li>
-                        {{-- <li>
-                            <a class="sidebar-link" href="{{ route('admin.grantProgram.index') }}">
-                                <i class="ti ti-brand-bunpo"></i> <span>Grant Programs</span>
-                            </a>
-                        </li> --}}
+
                     </ul>
                 </li>
                 <li class="sidebar-item">
@@ -99,8 +95,24 @@
                         <span>
                             <i class="ti ti-cards"></i>
                         </span>
-                        <span class="hide-menu">Card</span>
+                        <i class="ti ti-chevron-down"></i>
                     </a>
+
+                    <!-- Groups Dropdown -->
+                    <ul id="groupsDropdown" class="ml-6 mt-2 space-y-2 hidden">
+
+                     <li>
+                            <a class="sidebar-link" href="{{ route('admin.enterprise.index') }}">
+                                <i class="ti ti-building"></i> <span>Group</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="sidebar-link" href="{{ route('admin.groupPerson.index') }}">
+                                <i class="ti ti-user"></i> <span>Group Person</span>
+                            </a>
+                        </li>
+
+                    </ul>
                 </li>
                 <!-- Farmers Dropdown Menu -->
                 <li class="sidebar-item">

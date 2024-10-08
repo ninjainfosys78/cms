@@ -2,6 +2,7 @@
 
 namespace App\Models\Enterprises;
 
+use App\Models\Setting\FisicalYear;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -37,9 +38,9 @@ class EnterprisePerson extends Model
         return $this->belongsTo(Enterprise::class);
     }
 
-    // public function fisicalYear(): BelongsTo
-    // {
-    //     return $this->belongsTo(fisicalYear::class);
-    // }
+    public function fisicalYear(): BelongsTo
+    {
+        return $this->belongsTo(FisicalYear::class);
+    }
 }
 

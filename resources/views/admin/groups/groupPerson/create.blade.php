@@ -24,8 +24,8 @@
                                 </li>
                                 <li>
                                     <a href="#"
-                                        class="motion-reduce:transition-none-none text-black/60 transition duration-200 hover:text-black/80 hover:ease-in-out focus:text-black/80 active:text-black/80 motion-reduce:transition motion-reduce:transition-none ">Enterprise Person
-                                        Edit</a>
+                                        class="motion-reduce:transition-none-none text-black/60 transition duration-200 hover:text-black/80 hover:ease-in-out focus:text-black/80 active:text-black/80 motion-reduce:transition motion-reduce:transition-none ">Group Person
+                                        List</a>
                                 </li>
                                 <li>
                                     <span class="mx-2 text-black/60">/</span>
@@ -39,8 +39,8 @@
                     </li>
                 </ul>
                 <div class="flex items-center gap-4">
-                    <a href="{{ route('admin.fisicalYear.index') }}"
-                        class="btn font-medium bg-blue-600 hover:bg-red-600 py-1 text-white" aria-current="page">Enterprise Person List</a>
+                    <a href="{{ route('admin.groupPerson.index') }}"
+                        class="btn font-medium bg-blue-600 hover:bg-red-600 py-1 text-white" aria-current="page">Group Person Detail</a>
                 </div>
             </nav>
         </div>
@@ -49,57 +49,58 @@
                 <h6 class="text-lg text-gray-600 font-semibold">Forms</h6>
                 <div class="card">
                     <div class="card-body">
-                        <form class="flex flex-col gap-6" action="{{route('admin.enterprisePerson.update',$enterprisePerson)}}" method="POST"
+                        <form class="flex flex-col gap-6" action="{{route('admin.groupPerson.store')}}" method="POST"
                               enctype="multipart/form-data">
                             @csrf
-                            @method('PUT')
                             <div class="grid grid-cols-2 gap-4">
+
                                 <x-forms.TextInput
-                                    label="Enterprise Name"
+                                    label="Name"
                                     id="name"
                                     name="name"
-                                    placeholder="Enter name"
-                                    value="{{old('name',$enterprisePerson->name)}}"
+                                    placeholder="Enter  name"
                                 />
                                 <x-forms.TextInput
                                     type="tel"
                                     label="Phone"
                                     id="phone"
                                     name="phone"
-                                    placeholder="Enter phone"
-                                    value="{{old('name',$enterprisePerson->phone)}}"
+                                    placeholder="Enter  phone"
                                 />
                                 <x-forms.TextInput
                                     type="email"
                                     label="Email"
                                     id="email"
                                     name="email"
-                                    placeholder="Enter Email"
-                                    value="{{old('name',$enterprisePerson->email)}}"
+                                    placeholder="Enter  Email"
                                 />
                                 <x-forms.TextInput
                                     label="Designation"
                                     id="designation"
                                     name="designation"
-                                    placeholder="Enter Designation"
-                                    value="{{old('name',$enterprisePerson->designation)}}"
+                                    placeholder="Enter  Designation"
                                 />
                                 <x-forms.TextInput
                                     type="number"
                                     label="Position"
                                     id="position"
                                     name="position"
-                                    placeholder="Enter Position"
-                                    value="{{old('name',$enterprisePerson->position)}}"
-
+                                    placeholder="Enter  Position"
+                                    min="1"
                                 />
+
                                 <x-forms.SelectInput
                                 label="Select Fisical Year"
                                 id="fisical_year_id"
                                 name="fisical_year_id"
                                 :options="$options"
-                                value="{{old('name',$enterprisePerson->fisical_year_id)}}"
+                                />
 
+                                <x-forms.SelectInput
+                                label="Select Group"
+                                id="group_id"
+                                name="group_id"
+                                :options="$options"
                                 />
 
 
@@ -115,6 +116,10 @@
                 </div>
             </div>
         </div>
+
+
+
+
 
 
     </div>

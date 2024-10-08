@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Admin\Enterprises;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Enterprises\EnterprisePerson\StoreEnterprisePersonRequest;
+use App\Http\Requests\Enterprises\EnterprisePerson\UpdateEnterprisePersonRequest;
 use App\Models\Enterprises\EnterprisePerson;
+use App\Models\Setting\FisicalYear;
 use Illuminate\Http\Request;
 
 class EnterprisePersonController extends Controller
@@ -14,8 +16,8 @@ class EnterprisePersonController extends Controller
      */
     public function index()
     {
-        $enterprisePersons = EnterprisePerson::all();
-        return view('admin.enterprises.enterprisePerson.index',compact('enterprisePersons'));
+        $enterprisePeople = EnterprisePerson::all();
+        return view('admin.enterprises.enterprisePerson.index',compact('enterprisePeople'));
     }
 
     /**
@@ -23,7 +25,11 @@ class EnterprisePersonController extends Controller
      */
     public function create()
     {
-        return view('admin.enterprises.enterprisePerson.create');
+        $fisicalYears = FisicalYear::all();
+
+        $options = $fisicalYears->pluck('year','id')->toArray();
+
+        return view('admin.enterprises.enterprisePerson.create',compact('options'));
     }
 
     /**
@@ -49,15 +55,21 @@ class EnterprisePersonController extends Controller
      */
     public function edit(EnterprisePerson $enterprisePerson)
     {
-        //
+
+        $fisicalYears = FisicalYear::all();
+
+        $options = $fisicalYears->pluck('year','id')->toArray();
+        return view("admin.enterprises.enterprisePerson.edit",compact('enterprisePerson','options'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, EnterprisePerson $enterprisePerson)
+    public function update(UpdateEnterprisePersonRequest $request, EnterprisePerson $enterprisePerson)
     {
-        //
+        $enterprisePerson->update($request->validated());
+        toast('Enterprise Person updated successfully','success');
+        return to_route('admin.enterprisePerson.index');
     }
 
     /**
@@ -65,6 +77,8 @@ class EnterprisePersonController extends Controller
      */
     public function destroy(EnterprisePerson $enterprisePerson)
     {
-        //
+        $enterprisePerson->delete();
+        toast('Enterprise Person deleted successfully','success');
+        return back();
     }
 }
