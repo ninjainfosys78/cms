@@ -13,7 +13,8 @@ class GroupController extends Controller
      */
     public function index()
     {
-        //
+        $groups = Group::all();
+        return view('admin.groups.group.index',compact('groups'));
     }
 
     /**
@@ -21,7 +22,7 @@ class GroupController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.groups.group.create');
     }
 
     /**

@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Groups\Group;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateGroupRequest extends FormRequest
 {
@@ -11,7 +12,7 @@ class UpdateGroupRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +23,19 @@ class UpdateGroupRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => ['nullab;e', 'string', 'max:255'],
+            'registration_date' => ['nullab;e', 'date'],
+            'registered_office' => ['nullab;e'],
+            'monthly_meeting' => ['nullable'],
+            'vat_pan' => ['nullable'],
+            'address.province_id' => ['nullab;e', Rule::exists('provinces', 'id')],
+            'address.district_id' => ['nullab;e', Rule::exists('districts', 'id')],
+            'address.local_body_id' => ['nullab;e', Rule::exists('local_bodies', 'id')],
+            'address.ward_no' => ['nullab;e', 'integer'],
+            'address.village' => ['nullable'],
+            'address.tole' => ['nullable'],
+            'farmers' => ['nullable', 'array'],
+            'farmers.*' => [Rule::exists('farmers', 'id')->withoutTrashed()],
         ];
     }
 }

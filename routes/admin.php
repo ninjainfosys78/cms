@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\Enterprises\EnterpriseController;
 use App\Http\Controllers\Admin\Setting\Types\GrantTypeController;
 use App\Http\Controllers\Admin\Farmers\FarmerCooperativesController;
 use App\Http\Controllers\Admin\Enterprises\EnterprisePersonController;
+use App\Http\Controllers\Admin\Groups\GroupController;
 use App\Http\Controllers\Admin\Groups\GroupPersonController;
 use App\Http\Controllers\Admin\Setting\Types\EnterpriseTypeController;
 use App\Http\Controllers\Admin\Setting\Types\AffiliationTypeController;
@@ -37,11 +38,15 @@ Route::group(['prefix' => 'settings'], function () {
 Route::group(['prefix=>enterprises'], function () {
     Route::resource('enterprise', EnterpriseController::class);
     Route::resource('enterprisePerson', EnterprisePersonController::class);
-    Route::resource('groupPerson', GroupPersonController::class);
     Route::resource('enterpriseType', EnterpriseTypeController::class);
-    Route::resource('grantType', GrantTypeController::class);
 
 });
 Route::group(['prefix=>farmers'], function () {
     Route::resource('farmer', FarmerController::class);
 });
+
+Route::group(['prefix=>groups'], function () {
+    Route::resource('group', GroupController::class);
+    Route::resource('groupPerson', GroupPersonController::class);
+});
+

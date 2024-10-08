@@ -79,7 +79,7 @@
                     <ul id="groupsDropdown" class="ml-6 mt-2 space-y-2 hidden">
 
                      <li>
-                            <a class="sidebar-link" href="{{ route('admin.enterprise.index') }}">
+                            <a class="sidebar-link" href="{{ route('admin.group.index') }}">
                                 <i class="ti ti-building"></i> <span>Group</span>
                             </a>
                         </li>
