@@ -2,21 +2,16 @@
 
 namespace App\Models\Cooperatives;
 
-use App\Models\Setting\fisicalYear;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Setting\FisicalYear;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use App\Models\Cooperatives\Cooperative;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class CooperativePerson extends Model
 {
     use HasFactory, SoftDeletes;
-
-    protected $dates = [
-        'created_at',
-        'updated_at',
-        'deleted_at',
-    ];
 
     protected $fillable = [
         'cooperative_id',
@@ -28,11 +23,6 @@ class CooperativePerson extends Model
         'position',
     ];
 
-    protected $casts = [
-        'fisical_year_id' => 'integer',
-        'position' => 'integer',
-    ];
-
     public function cooperative(): BelongsTo
     {
         return $this->belongsTo(Cooperative::class);
@@ -40,6 +30,6 @@ class CooperativePerson extends Model
 
     public function fisicalYear(): BelongsTo
     {
-        return $this->belongsTo(fisicalYear::class);
+        return $this->belongsTo(FisicalYear::class);
     }
 }
