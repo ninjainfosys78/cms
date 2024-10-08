@@ -91,9 +91,11 @@
                     </ul>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="./ui-card.html" aria-expanded="false">
-                        <span>
-                            <i class="ti ti-cards"></i>
+                    <a class="sidebar-link flex justify-between items-center cursor-pointer" aria-expanded="false"
+                        onclick="toggleDropdown('groupsDropdown')">
+                        <span class="flex items-center">
+                            <i class="ti ti-users"></i>
+                            <span class="hide-menu ml-2">Groups</span>
                         </span>
                         <i class="ti ti-chevron-down"></i>
                     </a>
