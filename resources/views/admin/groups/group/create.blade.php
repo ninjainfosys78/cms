@@ -67,24 +67,35 @@
                                     name="phone"
                                     placeholder="Enter  phone"
                                 />
+
+                                <x-forms.TextInput
+                                    type="date"
+                                    label="Registered Date"
+                                    id="registered_date"
+                                    name="registered_date"
+                                    placeholder="Enter  Date"
+                                />
+
                                 <x-forms.TextInput
                                     label="Registered Office"
                                     id="registered_office"
                                     name="registered_office"
-                                    placeholder="Enter  Office"
+                                    placeholder="Enter  office  name"
                                 />
+
                                 <x-forms.TextInput
                                     label="Monthly Meeting"
                                     id="monthly_meeting"
                                     name="monthly_meeting"
-                                    placeholder="Enter  Monthly meeting"
+                                    placeholder="Enter  monthly meeting"
                                 />
+
                                 <x-forms.TextInput
                                     type="number"
                                     label="Vat Pan"
                                     id="vat_pan"
                                     name="vat_pan"
-                                    placeholder="Enter  Vat Pan"
+                                    placeholder="Enter  vat pan"
                                 />
 
                                 <x-forms.SelectInput
@@ -108,21 +119,22 @@
                                 {{-- :options="$options" --}}
                                 />
 
-                                <x-forms.TypeInput
+                                <x-forms.TextInput
                                 type="number"
-                                label="Select Ward No."
+                                label="Ward No."
                                 id="ward_no"
                                 name="ward_no"
                                 min="1"
+                                max="100"
                                 />
 
-                                <x-forms.TypeInput
-                                label="Vilage"
+                                <x-forms.TextInput
+                                label="Village"
                                 id="village"
                                 name="village"
                                 />
 
-                                <x-forms.TypeInput
+                                <x-forms.TextInput
                                 label="Tole"
                                 id="tole"
                                 name="tole"
