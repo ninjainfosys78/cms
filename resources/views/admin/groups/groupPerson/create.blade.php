@@ -100,7 +100,7 @@
                                 label="Select Group"
                                 id="group_id"
                                 name="group_id"
-                                :options="$options"
+                                :options="$groupOptions"
                                 />
 
 

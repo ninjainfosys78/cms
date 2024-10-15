@@ -72,7 +72,7 @@
                             </thead>
                             <tbody>
 
-                                @foreach ($groupPeople as $groupPerson)
+                                @foreach ($groupPersons as $groupPerson)
                                     <tr>
                                         <td class="border-b border-gray-200">
                                             <h6 class=" mb-0">{{ $loop->iteration }}</h6>
@@ -109,9 +109,9 @@
                             </tbody>
 
                         </table>
-                        {{-- <div class="mt-4">
+                        <div class="mt-4">
                             {{ $groupPersons->onEachSide(5)->links('vendor.pagination.bootstrap-5') }}
-                        </div> --}}
+                        </div>
                     </div>
                 </div>
             </div>

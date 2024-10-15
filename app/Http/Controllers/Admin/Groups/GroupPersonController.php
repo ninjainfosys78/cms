@@ -17,9 +17,8 @@ class GroupPersonController extends Controller
      */
     public function index()
     {
-        $groupPeople = GroupPerson::all();
-        return view('admin.groups.groupPerson.index',compact('groupPeople'));
-
+        $groupPersons = GroupPerson::latest()->paginate(10);
+        return view('admin.groups.groupPerson.index', compact('groupPersons'));
     }
 
     /**
@@ -28,12 +27,11 @@ class GroupPersonController extends Controller
     public function create()
     {
         $fisicalYears = FisicalYear::all();
-        $options = $fisicalYears->pluck('year','id')->toArray();
-        $groups = Group::all();
-        $groupOptions = $groups->pluck('name','id')->toArray();
+        $options = $fisicalYears->pluck('year', 'id')->toArray();
+        $groups = Group::latest()->get();
+        $groupOptions = $groups->pluck('name', 'id')->toArray();
 
-        return view('admin.groups.groupPerson.create',compact('options','groupOptions'));
-
+        return view('admin.groups.groupPerson.create', compact('options', 'groupOptions'));
     }
 
     /**
@@ -42,10 +40,8 @@ class GroupPersonController extends Controller
     public function store(StoreGroupPersonRequest $request)
     {
         GroupPerson::create($request->validated());
-        toast('Group Person added Successfully','success');
+        toast('Group Person added Successfully', 'success');
         return to_route('admin.groupPerson.create');
-
-
     }
 
     /**
@@ -62,11 +58,11 @@ class GroupPersonController extends Controller
     public function edit(GroupPerson $groupPerson)
     {
         $fisicalYears = FisicalYear::all();
-        $options = $fisicalYears->pluck('year','id')->toArray();
+        $options = $fisicalYears->pluck('year', 'id')->toArray();
         $groups = Group::all();
-        $groupOptions = $groups->pluck('name','id')->toArray();
+        $groupOptions = $groups->pluck('name', 'id')->toArray();
 
-        return view('admin.groups.groupPerson.edit',compact('groupPerson','options','groupOptions'));
+        return view('admin.groups.groupPerson.edit', compact('groupPerson', 'options', 'groupOptions'));
     }
 
     /**
@@ -75,7 +71,7 @@ class GroupPersonController extends Controller
     public function update(UpdateGroupPersonRequest $request, GroupPerson $groupPerson)
     {
         $groupPerson->update($request->validated());
-        toast('Group Person updated Successfully','success');
+        toast('Group Person updated Successfully', 'success');
 
         return view('admin.groups.groupPerson.index');
     }
@@ -86,7 +82,7 @@ class GroupPersonController extends Controller
     public function destroy(GroupPerson $groupPerson)
     {
         $groupPerson->delete();
-        toast('Group Person deleted Successfully','success');
+        toast('Group Person deleted Successfully', 'success');
         return back();
     }
 }

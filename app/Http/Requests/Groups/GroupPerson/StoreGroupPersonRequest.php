@@ -24,6 +24,7 @@ class StoreGroupPersonRequest extends FormRequest
     {
         return [
             'fisical_year_id' => ['required', Rule::exists('fisical_years', 'id')->withoutTrashed()],
+            'group_id' => ['required', Rule::exists('groups', 'id')->withoutTrashed()],
             'name' => ['required', 'string', 'max:255'],
             'phone' => ['nullable'],
             'email' => ['nullable', 'email'],

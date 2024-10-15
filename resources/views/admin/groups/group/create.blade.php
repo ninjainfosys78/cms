@@ -104,7 +104,7 @@
                                     placeholder="Enter Vat Pan"
                                 />
                          </div>
-                              @livewire('address')
+                              @livewire('address',['group' => $group])
 
                             <div class="grid grid-cols-2 gap-4">
                                 <x-forms.TextInput
