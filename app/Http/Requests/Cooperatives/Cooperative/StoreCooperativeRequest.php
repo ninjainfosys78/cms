@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Api\V1\Cooperatives\Cooperative;
+namespace App\Http\Requests\Cooperatives\Cooperative;
 
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Gate;

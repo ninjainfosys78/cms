@@ -2,12 +2,12 @@
 @section('content')
     <div class="container full-container py-5 flex flex-col gap-6">
         <div class="card flex items-center p-5">
-            <nav class=" w-full  flex items-center justify-between" aria-label="Global">
+            <nav class="w-full flex items-center justify-between" aria-label="Global">
                 <ul class="icon-nav flex items-center gap-4">
                     <li class="relative xl:hidden">
-                        <a class="text-xl  icon-hover cursor-pointer text-heading" id="headerCollapse"
-                            data-hs-overlay="#application-sidebar-brand" aria-controls="application-sidebar-brand"
-                            aria-label="Toggle navigation" href="javascript:void(0)">
+                        <a class="text-xl icon-hover cursor-pointer text-heading" id="headerCollapse"
+                           data-hs-overlay="#application-sidebar-brand" aria-controls="application-sidebar-brand"
+                           aria-label="Toggle navigation" href="javascript:void(0)">
                             <i class="ti ti-menu-2 relative z-1"></i>
                         </a>
                     </li>
@@ -17,14 +17,14 @@
                             <ol class="list-reset ms-2 flex">
                                 <li>
                                     <a href="{{ route('admin.dashboard') }}"
-                                        class="motion-reduce:transition-none-none text-black/60 transition duration-200 hover:text-black/80 hover:ease-in-out focus:text-black/80 active:text-black/80 motion-reduce:transition motion-reduce:transition-none ">Home</a>
+                                       class="motion-reduce:transition-none-none text-black/60 transition duration-200 hover:text-black/80 hover:ease-in-out focus:text-black/80 active:text-black/80 motion-reduce:transition motion-reduce:transition-none ">Home</a>
                                 </li>
                                 <li>
                                     <span class="mx-2 text-black/60">/</span>
                                 </li>
                                 <li>
                                     <a href="#"
-                                        class="motion-reduce:transition-none-none text-black/60 transition duration-200 hover:text-black/80 hover:ease-in-out focus:text-black/80 active:text-black/80 motion-reduce:transition motion-reduce:transition-none ">Cooperative
+                                       class="motion-reduce:transition-none-none text-black/60 transition duration-200 hover:text-black/80 hover:ease-in-out focus:text-black/80 active:text-black/80 motion-reduce:transition motion-reduce:transition-none ">Cooperative
                                         List</a>
                                 </li>
                                 <li>
@@ -32,7 +32,7 @@
                                 </li>
                                 <li>
                                     <a href="#"
-                                        class="motion-reduce:transition-none-none text-black/60 transition duration-200 hover:text-black/80 hover:ease-in-out focus:text-black/80 active:text-black/80 motion-reduce:transition motion-reduce:transition-none">Data</a>
+                                       class="motion-reduce:transition-none-none text-black/60 transition duration-200 hover:text-black/80 hover:ease-in-out focus:text-black/80 active:text-black/80 motion-reduce:transition motion-reduce:transition-none">Data</a>
                                 </li>
                             </ol>
                         </nav>
@@ -40,7 +40,7 @@
                 </ul>
                 <div class="flex items-center gap-4">
                     <a href="{{ route('admin.cooperative.index') }}"
-                        class="btn font-medium bg-blue-600 hover:bg-red-600 py-1 text-white" aria-current="page">Cooperative List</a>
+                       class="btn font-medium bg-blue-600 hover:bg-red-600 py-1 text-white" aria-current="page">Cooperative List</a>
                 </div>
             </nav>
         </div>
@@ -49,7 +49,7 @@
                 <h6 class="text-lg text-gray-600 font-semibold">Forms</h6>
                 <div class="card">
                     <div class="card-body">
-                        <form class="flex flex-col gap-6" action="{{route('admin.cooperative.store')}}" method="POST"
+                        <form class="flex flex-col gap-6" action="{{ route('admin.cooperative.store') }}" method="POST"
                               enctype="multipart/form-data">
                             @csrf
                             <div class="grid grid-cols-2 gap-4">
@@ -75,7 +75,7 @@
                                     label="Registration Date"
                                     id="registration_date"
                                     name="registration_date"
-                                    placeholder="Enter registration_date"
+                                    placeholder="Enter registration date"
                                 />
                                 <x-forms.TextInput
                                     label="Vat/Pan"
@@ -95,12 +95,21 @@
                                     name="affiliation_id"
                                     placeholder="Enter affiliation id"
                                 />
-                                <x-forms.SelectInput
+                                {{-- <x-forms.SelectInput
                                     label="Province"
                                     id="province_id"
                                     name="province_id"
-                                    placeholder="Enter province"
-                                />
+                                    placeholder="Select Province"
+                                    :options="$provinces"
+                                /> --}}
+                              @livewire('address')
+                                {{-- <x-forms.SelectInput
+                                    label="District"
+                                    id="district_id"
+                                    name="district_id"
+                                    placeholder="Select District"
+                                    :options="$districts"
+                                /> --}}
                             </div>
 
                             <div class="col-md-12">
@@ -113,11 +122,5 @@
                 </div>
             </div>
         </div>
-
-
-
-
-
-
     </div>
 @endsection

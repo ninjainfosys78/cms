@@ -16,6 +16,7 @@
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @livewireStyles
 </head>
 
 
@@ -44,6 +45,7 @@
     <script src="{{ asset('assets/backend/libs/apexcharts/dist/apexcharts.min.js') }}"></script>
     <script src="{{ asset('assets/backend/libs/simplebar/dist/simplebar.js')}}"></script>
     <script src="{{ asset('assets/backend/js/dashboard.js') }}"></script>
+    @livewireScripts
 </body>
 
 </html>

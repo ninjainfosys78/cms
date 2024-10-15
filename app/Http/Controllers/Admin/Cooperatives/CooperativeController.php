@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers\Admin\Cooperatives;
 
+use App\Http\Requests\Cooperatives\Cooperative\StoreCooperativeRequest;
+use App\Models\Address\Province;
+use App\Models\Address\District;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Cooperatives\Cooperative;
@@ -25,15 +28,21 @@ class CooperativeController extends Controller
     {
         $options1 = CooperativeType::all();
         $cooperativeTypes = $options1->pluck('title','id')->toArray();
-        return view('admin.cooperatives.cooperative.create',compact('cooperativeTypes'));
+        $options2 = Province::all();
+        // $options3 =  District::where('province_id')->get();
+        $provinces = $options2->pluck('province','id')->toArray();
+        $districts = District::where('province_id', 1)->pluck('district', 'id')->toArray();
+        return view('admin.cooperatives.cooperative.create',compact('cooperativeTypes','provinces','districts'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreCooperativeRequest $request)
     {
-        //
+        Cooperative::create($request->validated());
+        toast('Cooperative added Successfully','success');
+        return to_route('admin.cooperatives.cooperative.index');
     }
 
     /**
