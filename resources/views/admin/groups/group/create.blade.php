@@ -49,24 +49,32 @@
                 <h6 class="text-lg text-gray-600 font-semibold">Forms</h6>
                 <div class="card">
                     <div class="card-body">
+                        @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                         <form class="flex flex-col gap-6" action="{{route('admin.group.store')}}" method="POST"
                               enctype="multipart/form-data">
                             @csrf
                             <div class="grid grid-cols-2 gap-4">
-
                                 <x-forms.TextInput
                                     label="Name"
                                     id="name"
                                     name="name"
-                                    placeholder="Enter  name"
+                                    placeholder='Enter name'
                                 />
-                                <x-forms.TextInput
+                                {{-- <x-forms.TextInput
                                     type="tel"
                                     label="Phone"
                                     id="phone"
                                     name="phone"
                                     placeholder="Enter  phone"
-                                />
+                                /> --}}
                                 <x-forms.TextInput
                                     label="Registered Office"
                                     id="registered_office"
@@ -74,61 +82,59 @@
                                     placeholder="Enter  Office"
                                 />
                                 <x-forms.TextInput
+                                    label="Registered Date"
+                                    id="registered_date"
+                                    name="registration_date"
+                                    type="date"
+                                    placeholder="Enter  registered date"
+                                />
+                                <x-forms.TextInput
                                     label="Monthly Meeting"
                                     id="monthly_meeting"
                                     name="monthly_meeting"
-                                    placeholder="Enter  Monthly meeting"
+                                    value="{{ old('monthly_meeting') }}"
+                                    placeholder="Enter Monthly meeting"
                                 />
                                 <x-forms.TextInput
-                                    type="number"
-                                    label="Vat Pan"
+
+                                    label="Vat/Pan"
                                     id="vat_pan"
                                     name="vat_pan"
-                                    placeholder="Enter  Vat Pan"
-                                />
 
-                                <x-forms.SelectInput
-                                label="Select Province"
-                                id="province_id"
-                                name="province_id"
-                                {{-- :options="$options" --}}
+                                    placeholder="Enter Vat Pan"
                                 />
+                         </div>
+                              @livewire('address')
 
-                                <x-forms.SelectInput
-                                label="Select District"
-                                id="district_id"
-                                name="district_id"
-                                {{-- :options="$options" --}}
-                                />
-
-                                <x-forms.SelectInput
-                                label="Select Local Body"
-                                id="local_body_id"
-                                name="local_body_id"
-                                {{-- :options="$options" --}}
-                                />
-
-                                <x-forms.TypeInput
-                                type="number"
-                                label="Select Ward No."
+                            <div class="grid grid-cols-2 gap-4">
+                                <x-forms.TextInput
+                                label="Ward No."
+                                type='number'
                                 id="ward_no"
                                 name="ward_no"
-                                min="1"
-                                />
 
-                                <x-forms.TypeInput
-                                label="Vilage"
+                                />
+                                <x-forms.TextInput
+                                label="Vilage Name"
                                 id="village"
-                                name="village"
+                                name='village'
+                                placeholder="Enter village Name"
                                 />
 
-                                <x-forms.TypeInput
+                                <x-forms.TextInput
                                 label="Tole"
                                 id="tole"
                                 name="tole"
                                 />
+                                {{-- <x-forms.SelectInput
+                                label="Farmer"
+                                id="farmers"
+                                name="farmers"
+                                :options="$farmers"
+                                /> --}}
 
                             </div>
+
 
                             <div class="col-md-12">
                                 <button type="submit" class="btn btn-sm btn-primary">

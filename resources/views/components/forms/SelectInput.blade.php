@@ -37,9 +37,8 @@
 <div class="relative mb-6">
     <label for="{{ $id }}" class="block text-sm font-semibold mb-2 text-gray-600">{{ $label }}</label>
     <select id="{{ $id }}" name="{{ $name }}"
-            class="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-600 focus:ring-0 {{ $class }}"
-            aria-describedby="helper-{{ $id }}"
-            style="height: 3rem; /* Adjust height as needed */">
+            class="py-2 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-600 focus:ring-0 {{ $class }}"
+            aria-describedby="helper-{{ $id }}">
         @foreach($options as $value => $option)
             <option value="{{ $value }}" {{ $selected == $value ? 'selected' : '' }}>{{ $option }}</option>
         @endforeach

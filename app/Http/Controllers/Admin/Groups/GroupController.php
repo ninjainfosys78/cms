@@ -3,8 +3,14 @@
 namespace App\Http\Controllers\Admin\Groups;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Groups\Group\StoreGroupRequest;
+use App\Models\Address\District;
+use App\Models\Address\LocalBody;
+use App\Models\Address\Province;
+use App\Models\Farmers\Farmer;
 use App\Models\Groups\Group;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class GroupController extends Controller
 {
@@ -13,7 +19,7 @@ class GroupController extends Controller
      */
     public function index()
     {
-        $groups = Group::all();
+        $groups = Group::latest()->paginate(10);
         return view('admin.groups.group.index',compact('groups'));
     }
 
@@ -22,15 +28,19 @@ class GroupController extends Controller
      */
     public function create()
     {
-        return view('admin.groups.group.create');
+        // $options= Farmer::all();
+        // $farmers= $options->pluck('first_name')->toArray();
+        return view('admin.groups.group.create',compact('farmers'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreGroupRequest $request)
     {
-        //
+        Group::create($request->validated()+ ['user_id'=>Auth::user()->id]);
+        toast('Group added Successfully','success');
+        return to_route('admin.group.create');
     }
 
     /**
@@ -46,8 +56,15 @@ class GroupController extends Controller
      */
     public function edit(Group $group)
     {
-        //
+        // Retrieve necessary data for the form
+        $provinces = Province::all(); // Adjust as per your setup
+        $districts = District::where('province_id', $group->province_id)->get(); // Adjust to filter by selected province
+        $localBodies = LocalBody::where('district_id', $group->district_id)->get(); // Adjust to filter by selected district
+
+        // Pass the $group and other data to the view
+        return view('admin.groups.group.edit', compact('group', 'provinces', 'districts', 'localBodies'));
     }
+
 
     /**
      * Update the specified resource in storage.
