@@ -1,53 +1,47 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Livewire;
 
+use App\Models\Address\District;
+use App\Models\Address\LocalBody;
+use App\Models\Address\Province;
+use Livewire\Component;
 
-use Illuminate\View\Component;
 
 class Address extends Component
 {
-    public $province_id = '';
-
-    public $district_id = '';
-
-    public $local_body_id = '';
-
-    public $ward_no = '';
-
-    public $provinces = [];
-
+    public $provinces;
     public $districts = [];
-
     public $localBodies = [];
 
-    public $wards = '';
+    public $selectedProvince = null;
+    public $selectedDistrict = null;
 
-    public function mount($address = null)
+    public function mount()
     {
-        $this->provinces = get_provinces();
-        if (!empty($address)) {
-            $this->province_id = $address['province_id'] ?? '';
-            $this->district_id = $address['district_id'] ?? '';
-            $this->local_body_id = $address['local_body_id'] ?? '';
-            $this->ward_no = $address['ward_no'] ?? '';
-        }
+        // Load all provinces when the component mounts
+        $this->provinces = Province::all();
+    }
+    public function changeSelectedProvince(){
+
+    }
+
+    public function updatedSelectedProvince()
+    {
+        // Load districts based on selected province
+        $this->districts = District::where('province_id', $this->selectedProvince)->get();
+        $this->selectedDistrict = null;  // Reset selected district
+        $this->localBodies = [];         // Reset local bodies when a new province is selected
+    }
+
+    public function updatedSelectedDistrict()
+    {
+        // Load local bodies based on selected district
+        $this->localBodies = LocalBody::where('district_id', $this->selectedDistrict)->get();
     }
 
     public function render()
     {
-        if (!empty($this->province_id)) {
-            $this->districts = get_districts($this->province_id);
-        }
-        if (!empty($this->district_id)) {
-            $this->localBodies = get_local_bodies($this->district_id);
-        }
-        if (!empty($this->local_body_id)) {
-            $this->wards = get_local_bodies(localBodyId: $this->local_body_id)->wards;
-        }
-
         return view('livewire.address');
-
     }
-
 }

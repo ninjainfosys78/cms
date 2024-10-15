@@ -59,7 +59,7 @@
                                             <h6 class="mb-0">{{  $loop->iteration }}</h6>
                                         </td>
                                         <td class="border-b border-gray-200">
-                                            <h6 class="mb-1">{{ $grantProgram->program_name ?? '' }}</h6>
+                                            <h6 class="mb-1">{{ $grantProgram->Program_name ?? '' }}</h6>
                                         </td>
                                         <td class="border-b border-gray-200 gap-2 flex">
                                             <a href="{{ route('admin.grantProgram.edit', $grantProgram) }}">

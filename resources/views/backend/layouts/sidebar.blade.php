@@ -91,9 +91,11 @@
                     </ul>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="./ui-card.html" aria-expanded="false">
-                        <span>
-                            <i class="ti ti-cards"></i>
+                    <a class="sidebar-link flex justify-between items-center cursor-pointer" aria-expanded="false"
+                        onclick="toggleDropdown('groupsDropdown')">
+                        <span class="flex items-center">
+                            <i class="ti ti-users"></i>
+                            <span class="hide-menu ml-2">Groups</span>
                         </span>
                         <i class="ti ti-chevron-down"></i>
                     </a>
@@ -114,6 +116,34 @@
 
                     </ul>
                 </li>
+
+                <li class="sidebar-item">
+                    <a class="sidebar-link flex justify-between items-center cursor-pointer" aria-expanded="false"
+                        onclick="toggleDropdown('grantsDropdown')">
+                        <span class="flex items-center">
+                            <i class="ti ti-circle-check"></i>
+                            <span class="hide-menu ml-2">Grants</span>
+                        </span>
+                        <i class="ti ti-chevron-down"></i>
+                    </a>
+
+                    <!-- Grants Dropdown -->
+                    <ul id="grantsDropdown" class="ml-6 mt-2 space-y-2 hidden">
+
+                     <li>
+                            <a class="sidebar-link" href="{{ route('admin.grant.index') }}">
+                                <i class="ti ti-check"></i> <span>Grant</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="sidebar-link" href="{{ route('admin.grantDetail.index') }}">
+                                <i class="ti ti-file"></i> <span>Grant Detail</span>
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>
+
                 <!-- Farmers Dropdown Menu -->
                 <li class="sidebar-item">
                     <a class="sidebar-link flex justify-between items-center cursor-pointer" href="{{ route('admin.farmer.index') }}" aria-expanded="false">

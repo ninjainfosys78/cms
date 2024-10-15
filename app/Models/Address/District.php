@@ -25,12 +25,15 @@ class District extends Model
         'code',
     ];
 
-    public function province(): BelongsTo
+
+
+
+    public function province()
     {
         return $this->belongsTo(Province::class);
     }
 
-    public function localBodies(): HasMany
+    public function localBodies()
     {
         return $this->hasMany(LocalBody::class);
     }
