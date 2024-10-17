@@ -49,8 +49,7 @@
                 <h6 class="text-lg text-gray-600 font-semibold">Forms</h6>
                 <div class="card">
                     <div class="card-body">
-                        <form class="flex flex-col gap-6" action="{{route('admin.groupPerson.update',$groupPerson)}}" method="POST"
-                              enctype="multipart/form-data">
+                        <form class="flex flex-col gap-6" action="{{route('admin.group.update', $group)}}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
                             <div class="grid grid-cols-2 gap-4">
@@ -58,59 +57,71 @@
                                     label="Name"
                                     id="name"
                                     name="name"
-                                    placeholder="Enter name"
-                                    value="{{old('name',$groupPerson->name)}}"
+                                    value="{{ old('name', $group->name) }}"
+                                    placeholder='Enter name'
                                 />
-                                <x-forms.TextInput
+                                {{-- <x-forms.TextInput
                                     type="tel"
                                     label="Phone"
                                     id="phone"
                                     name="phone"
+                                    value="{{ old('phone', $group->phone) }}"
                                     placeholder="Enter phone"
-                                    value="{{old('name',$groupPerson->phone)}}"
+                                /> --}}
+                                <x-forms.TextInput
+                                    label="Registered Office"
+                                    id="registered_office"
+                                    name="registered_office"
+                                    value="{{ old('registered_office', $group->registered_office) }}"
+                                    placeholder="Enter Office"
                                 />
                                 <x-forms.TextInput
-                                    type="email"
-                                    label="Email"
-                                    id="email"
-                                    name="email"
-                                    placeholder="Enter Email"
-                                    value="{{old('name',$groupPerson->email)}}"
+                                    label="Registered Date"
+                                    id="registered_date"
+                                    name="registration_date"
+                                    type="date"
+                                    value="{{ old('registration_date', $group->registration_date) }}"
+                                    placeholder="Enter registered date"
                                 />
                                 <x-forms.TextInput
-                                    label="Designation"
-                                    id="designation"
-                                    name="designation"
-                                    placeholder="Enter Designation"
-                                    value="{{old('name',$groupPerson->designation)}}"
+                                    label="Monthly Meeting"
+                                    id="monthly_meeting"
+                                    name="monthly_meeting"
+                                    value="{{ old('monthly_meeting', $group->monthly_meeting) }}"
+                                    placeholder="Enter Monthly meeting"
                                 />
                                 <x-forms.TextInput
-                                    type="number"
-                                    label="Position"
-                                    id="position"
-                                    name="position"
-                                    placeholder="Enter Position"
-                                    value="{{old('name',$groupPerson->position)}}"
-
+                                    label="Vat/Pan"
+                                    id="vat_pan"
+                                    name="vat_pan"
+                                    value="{{ old('vat_pan', $group->vat_pan) }}"
+                                    placeholder="Enter Vat Pan"
                                 />
-                                <x-forms.SelectInput
-                                label="Select Fisical Year"
-                                id="fisical_year_id"
-                                name="fisical_year_id"
-                                :options="$options"
-                                value="{{old('name',$groupPerson->fisical_year_id)}}"
+                            </div>
 
+                            @livewire('address')
+
+                            <div class="grid grid-cols-2 gap-4">
+                                <x-forms.TextInput
+                                    label="Ward No."
+                                    type='number'
+                                    id="ward_no"
+                                    name="ward_no"
+                                    value="{{ old('ward_no', $group->ward_no) }}"
                                 />
-                                <x-forms.SelectInput
-                                label="Select Group"
-                                id="group_id"
-                                name="group_id"
-                                :options="$options"
-                                value="{{old('name',$groupPerson->group_id)}}"
-
+                                <x-forms.TextInput
+                                    label="Village Name"
+                                    id="village"
+                                    name='village'
+                                    value="{{ old('village', $group->village) }}"
+                                    placeholder="Enter village Name"
                                 />
-
-
+                                <x-forms.TextInput
+                                    label="Tole"
+                                    id="tole"
+                                    name="tole"
+                                    value="{{ old('tole', $group->tole) }}"
+                                />
                             </div>
 
                             <div class="col-md-12">
@@ -119,6 +130,7 @@
                                 </button>
                             </div>
                         </form>
+
                     </div>
                 </div>
             </div>

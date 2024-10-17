@@ -19,6 +19,8 @@ use App\Http\Controllers\Admin\Setting\Types\EnterpriseTypeController;
 use App\Http\Controllers\Admin\Setting\Types\AffiliationTypeController;
 use App\Http\Controllers\Admin\Setting\Types\CooperativeTypeController;
 use App\Http\Controllers\Admin\Cooperatives\CooperativePersonController;
+use App\Http\Controllers\Admin\Grants\GrantController;
+use App\Http\Controllers\Admin\Grants\GrantDetailController;
 
 Route::get('/dashboard',[DashboardController::class,'_invoke'])->name('dashboard');
 
@@ -50,6 +52,11 @@ Route::group(['prefix=>farmers'], function () {
 Route::group(['prefix=>groups'], function () {
     Route::resource('group', GroupController::class);
     Route::resource('groupPerson', GroupPersonController::class);
+});
+
+Route::group(['prefix=>grants'], function () {
+    Route::resource('grant', GrantController::class);
+    Route::resource('grantDetail', GrantDetailController::class);
 });
 
 Route::group(['prefix=>cooperatives'], function () {

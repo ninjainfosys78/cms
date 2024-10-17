@@ -24,7 +24,7 @@
                                 </li>
                                 <li>
                                     <a href="#"
-                                        class="motion-reduce:transition-none-none text-black/60 transition duration-200 hover:text-black/80 hover:ease-in-out focus:text-black/80 active:text-black/80 motion-reduce:transition motion-reduce:transition-none ">Group
+                                        class="motion-reduce:transition-none-none text-black/60 transition duration-200 hover:text-black/80 hover:ease-in-out focus:text-black/80 active:text-black/80 motion-reduce:transition motion-reduce:transition-none ">Grant Detail
                                         List</a>
                                 </li>
                                 <li>
@@ -39,7 +39,7 @@
                     </li>
                 </ul>
                 <div class="flex items-center gap-4">
-                    <a href="{{ route('admin.group.create') }}"
+                    <a href="{{ route('admin.grantDetail.create') }}"
                         class="btn font-medium bg-blue-600 hover:bg-red-600 py-2 text-white" aria-current="page">Add New</a>
                 </div>
             </nav>
@@ -48,7 +48,7 @@
         <div class="col-lg-12 overflow-hidden d-flex align-items-stretch">
             <div class="card w-100">
                 <div class="card-body p-4">
-                    <h5 class="card-title fw-semibold mb-4">Group</h5>
+                    <h5 class="card-title fw-semibold mb-4">Grant Detail</h5>
                     <div class="table-responsive">
                         <table class="table text-nowrap mb-0 align-middle">
                             <thead class="text-dark fs-4">
@@ -58,18 +58,12 @@
                                     </th>
 
                                     <th class="border-right-1">
-                                        <h6 class="fw-semibold mb-0">Name</h6>
+                                        <h6 class="fw-semibold mb-0">Investment Amount</h6>
                                     </th>
 
-                                    <th class="border-right-1">
-                                        <h6 class="fw-semibold mb-0">Vat Pan</h6>
-                                    </th>
-                                    <th class="border-right-1">
-                                        <h6 class="fw-semibold mb-0">Registered Office</h6>
-                                    </th>
-                                    <th class="border-right-1">
-                                        <h6 class="fw-semibold mb-0">Registered Date</h6>
-                                    </th>
+                                    {{-- <th class="border-right-1">
+                                        <h6 class="fw-semibold mb-0">Designation</h6>
+                                    </th> --}}
 
                                     <th class="border-bottom-0">
                                         <h6 class="fw-semibold mb-0">Action</h6>
@@ -78,33 +72,27 @@
                             </thead>
                             <tbody>
 
-                                @foreach ($groups as $group)
+                                @foreach ($grantDetails as $grantDetail)
                                     <tr>
                                         <td class="border-b border-gray-200">
                                             <h6 class=" mb-0">{{ $loop->iteration }}</h6>
                                         </td>
 
                                         <td class="border-b border-gray-200">
-                                            <h6 class=" mb-1">{{ $group->name ?? '' }}</h6>
+                                            <h6 class=" mb-1">{{ $grantDetail->investment_amount ?? '' }}</h6>
                                         </td>
 
-                                        <td class="border-b border-gray-200">
-                                            <h6 class=" mb-1">{{ $group->vat_pan ?? '' }}</h6>
-                                        </td>
-                                        <td class="border-b border-gray-200">
-                                            <h6 class=" mb-1">{{ $group->registered_office ?? '' }}</h6>
-                                        </td>
-                                        <td class="border-b border-gray-200">
-                                            <h6 class=" mb-1">{{ $group->registration_date ?? '' }}</h6>
-                                        </td>
+                                        {{-- <td class="border-b border-gray-200">
+                                            <h6 class=" mb-1">{{ $grantDetail->designation ?? '' }}</h6>
+                                        </td> --}}
 
                                         <td class="border-b border-gray-200 gap-2 flex">
-                                            <a href="{{ route('admin.group.edit',$group) }}"><i
+                                            <a href="{{ route('admin.grantDetail.edit', $grantDetail) }}"><i
                                                     class="ti ti-edit text-[18px] text-white hover:bg-blue-500 bg-green-500 p-2 rounded-full"></i></a>
                                             <a href=""><i class=""></i></a>
 
 
-                                            <form action="{{ route('admin.group.destroy', $group) }}"
+                                            <form action="{{ route('admin.grantDetail.destroy', $grantDetail) }}"
                                                 method="POST" class="inline-block">
                                                 @csrf
                                                 @method('DELETE')
@@ -121,9 +109,9 @@
                             </tbody>
 
                         </table>
-                        <div class="mt-4">
-                            {{ $groups->links('vendor.pagination.bootstrap-5') }}
-                        </div>
+                        {{-- <div class="mt-4">
+                            {{ $grantDetails->onEachSide(5)->links('vendor.pagination.bootstrap-5') }}
+                        </div> --}}
                     </div>
                 </div>
             </div>

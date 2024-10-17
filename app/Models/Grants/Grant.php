@@ -12,6 +12,14 @@ use App\Models\Setting\fisicalYear;
 use App\Models\Setting\GrantOffice;
 use App\Models\Setting\GrantProgram;
 use App\Models\Setting\Types\GrantType;
+<<<<<<< HEAD
+=======
+use App\Models\Setting\Types\GrantType as TypesGrantType;
+use App\Models\User;
+use App\Traits\GetAllColumns;
+use App\Traits\QueryFilterTrait;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+>>>>>>> e94c3edae7393785f04a3ca31b2729df3f802698
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\HasMany;

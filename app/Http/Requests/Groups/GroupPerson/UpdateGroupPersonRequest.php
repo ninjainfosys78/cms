@@ -23,8 +23,9 @@ class UpdateGroupPersonRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'fisical_year_id' => ['nullable', Rule::exists('fisical_years', 'id')->withoutTrashed()],
-            'name' => ['nullable', 'string', 'max:255'],
+            'fisical_year_id' => ['required', Rule::exists('fisical_years', 'id')->withoutTrashed()],
+            'group_id' => ['required', Rule::exists('groups', 'id')->withoutTrashed()],
+            'name' => ['required', 'string', 'max:255'],
             'phone' => ['nullable'],
             'email' => ['nullable', 'email'],
             'designation' => ['nullable'],
