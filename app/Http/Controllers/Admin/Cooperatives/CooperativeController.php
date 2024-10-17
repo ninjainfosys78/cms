@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\Cooperatives;
 
 use Illuminate\Http\Request;
+use App\Models\Address\Province;
 use App\Http\Controllers\Controller;
 use App\Models\Cooperatives\Cooperative;
 use App\Models\Setting\Types\CooperativeType;
@@ -23,9 +24,11 @@ class CooperativeController extends Controller
      */
     public function create()
     {
+        $provinces = Province::all();
+        $provinceOptions  = $provinces->pluck('province','id')->toArray();
         $options1 = CooperativeType::all();
         $cooperativeTypes = $options1->pluck('title','id')->toArray();
-        return view('admin.cooperatives.cooperative.create',compact('cooperativeTypes'));
+        return view('admin.cooperatives.cooperative.create',compact('cooperativeTypes','provinceOptions'));
     }
 
     /**

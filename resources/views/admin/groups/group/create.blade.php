@@ -108,7 +108,7 @@
                                 {{-- :options="$options" --}}
                                 />
 
-                                <x-forms.TypeInput
+                                <x-forms.TextInput
                                 type="number"
                                 label="Select Ward No."
                                 id="ward_no"
@@ -116,13 +116,13 @@
                                 min="1"
                                 />
 
-                                <x-forms.TypeInput
+                                <x-forms.TextInput
                                 label="Vilage"
                                 id="village"
                                 name="village"
                                 />
 
-                                <x-forms.TypeInput
+                                <x-forms.TextInput
                                 label="Tole"
                                 id="tole"
                                 name="tole"

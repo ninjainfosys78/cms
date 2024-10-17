@@ -14,6 +14,7 @@
     <link rel="shortcut icon" type="image/png" href="{{ asset('assets/backend/images/logos/favicon.png') }}" />
     <link rel="stylesheet" href="{{ asset('assets/backend/css/styles.min.css') }}" />
 
+    @livewireStyles
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
@@ -37,6 +38,7 @@
            @yield('content')
         </div>
     </div>
+    @livewireScripts
     <script src="{{ asset('assets/backend/libs/jquery/dist/jquery.min.js') }}"></script>
     <script src="{{ asset('assets/backend/libs/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('assets/backend/js/sidebarmenu.js') }}"></script>

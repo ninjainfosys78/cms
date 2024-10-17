@@ -95,14 +95,11 @@
                                     name="affiliation_id"
                                     placeholder="Enter affiliation id"
                                 />
-                                <x-forms.SelectInput
-                                    label="Province"
-                                    id="province_id"
-                                    name="province_id"
-                                    placeholder="Enter province"
-                                />
+                                @livewire('dependent-dropdown')
                             </div>
-
+                            {{-- <div class="">
+                                <livewire:DependentDropdown />
+                            </div> --}}
                             <div class="col-md-12">
                                 <button type="submit" class="btn btn-sm btn-primary">
                                     Submit
