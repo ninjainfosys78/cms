@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 return new class extends Migration {
     public function up()
@@ -16,7 +16,7 @@ return new class extends Migration {
             $table->string('registration_date')->comment('दर्ता मिति');
             $table->string('vat_pan')->comment('भ्याट प्यान')->nullable();
             $table->mediumText('objective')->comment('उद्देश्य')->nullable();
-            $table->foreignId('affiliation_id')->comment('सम्बद्धता')->nullable()->constrained()->nullOnDelete();
+            $table->foreignId('affiliation_id')->comment('सम्बद्धता')->nullable()->constrained('affiliations')->nullOnDelete();
             $table->foreignId('province_id')->comment('प्रदेश')->nullable()->constrained()->nullOnDelete();
             $table->foreignId('district_id')->comment('जिल्ला')->nullable()->constrained()->nullOnDelete();
             $table->foreignId('local_body_id')->comment('पालिका')->nullable()->constrained()->nullOnDelete();

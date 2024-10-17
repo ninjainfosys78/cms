@@ -205,9 +205,14 @@
                                 <i class="ti ti-chevron-down"></i>
                             </a>
                             <ul id="typesDropdown" class="ml-6 mt-2 space-y-2 hidden">
-                                <li>
+                                {{-- <li>
                                     <a class="sidebar-link" href="{{ route('admin.affiliationType.index') }}">
                                         <i class="ti ti-affiliate"></i> <span>Affiliation Type</span>
+                                    </a>
+                                </li> --}}
+                                <li>
+                                    <a class="sidebar-link" href="{{ route('admin.affiliation.index') }}">
+                                        <i class="ti ti-affiliate"></i> <span>Affiliation</span>
                                     </a>
                                 </li>
                                 <li>

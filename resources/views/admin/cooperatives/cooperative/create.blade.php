@@ -49,6 +49,15 @@
                 <h6 class="text-lg text-gray-600 font-semibold">Forms</h6>
                 <div class="card">
                     <div class="card-body">
+                        @if ($errors->any())
+                                    <div class="alert alert-danger">
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
                         <form class="flex flex-col gap-6" action="{{route('admin.cooperative.store')}}" method="POST"
                               enctype="multipart/form-data">
                             @csrf
@@ -89,11 +98,11 @@
                                     name="objective"
                                     placeholder="Enter objective"
                                 />
-                                <x-forms.TextInput
+                                <x-forms.SelectInput
                                     label="Affiliation ID"
                                     id="affiliation_id"
                                     name="affiliation_id"
-                                    placeholder="Enter affiliation id"
+                                    :options="$affiliationTypes"
                                 />
                                 @livewire('dependent-dropdown')
                             </div>

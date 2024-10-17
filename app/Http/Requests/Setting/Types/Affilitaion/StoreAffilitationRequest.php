@@ -4,7 +4,7 @@ namespace App\Http\Requests\Setting\Types\Affilitaion;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreAffilitationTypeRequest extends FormRequest
+class StoreAffilitationRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,7 +22,7 @@ class StoreAffilitationTypeRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => ['required', 'string', 'min:3'],
+            'name' => ['required', 'string', 'min:3'],
         ];
     }
 }

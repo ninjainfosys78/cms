@@ -54,6 +54,8 @@
                             @csrf
                             @method('PUT')
                             <div class="grid grid-cols-2 gap-4">
+                                <x-forms.SelectInput label="Enterprise Type" id="enterprise_type_id" name="enterprise_type_id"
+                                    :options="$enterpriseTypes" />
                                 <x-forms.TextInput
                                     label="Enterprise Name"
                                     id="name"

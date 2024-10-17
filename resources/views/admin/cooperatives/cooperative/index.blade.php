@@ -60,6 +60,9 @@
                                         <h6 class="fw-semibold mb-0">Name</h6>
                                     </th>
                                     <th class="border-right-1">
+                                        <h6 class="fw-semibold mb-0">Cooperative Type</h6>
+                                    </th>
+                                    <th class="border-right-1">
                                         <h6 class="fw-semibold mb-0">Registration No</h6>
                                     </th>
 
@@ -76,7 +79,13 @@
                                             <h6 class=" mb-0">{{ $loop->iteration }}</h6>
                                         </td>
                                         <td class="border-b border-gray-200">
-                                            <h6 class=" mb-1">{{ $cooperative->year ?? '' }}</h6>
+                                            <h6 class=" mb-1">{{ $cooperative->name ?? '' }}</h6>
+                                        </td>
+                                        <td class="border-b border-gray-200">
+                                            <h6 class=" mb-1">{{ $cooperative->cooperativeType->title ?? '' }}</h6>
+                                        </td>
+                                        <td class="border-b border-gray-200">
+                                            <h6 class=" mb-1">{{ $cooperative->registration_no?? '' }}</h6>
                                         </td>
                                         <td class="border-b border-gray-200 gap-2 flex">
                                             <a href="{{ route('admin.cooperative.edit', $cooperative) }}"><i
