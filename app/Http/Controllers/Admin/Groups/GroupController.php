@@ -30,7 +30,7 @@ class GroupController extends Controller
     {
         // $options= Farmer::all();
         // $farmers= $options->pluck('first_name')->toArray();
-        return view('admin.groups.group.create',compact('farmers'));
+        return view('admin.groups.group.create');
     }
 
     /**
