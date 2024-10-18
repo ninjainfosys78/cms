@@ -11,6 +11,7 @@ use App\Models\Address\LocalBody;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Groups\Group\StoreGroupRequest;
+use App\Http\Requests\Groups\Group\UpdateGroupRequest;
 
 class GroupController extends Controller
 {
@@ -56,22 +57,19 @@ class GroupController extends Controller
      */
     public function edit(Group $group)
     {
-        // Retrieve necessary data for the form
-        $provinces = Province::all(); // Adjust as per your setup
-        $districts = District::where('province_id', $group->province_id)->get(); // Adjust to filter by selected province
-        $localBodies = LocalBody::where('district_id', $group->district_id)->get(); // Adjust to filter by selected district
-
-        // Pass the $group and other data to the view
-        return view('admin.groups.group.edit', compact('group', 'provinces', 'districts', 'localBodies'));
+        return view('admin.groups.group.edit',compact('group'));
     }
 
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Group $group)
+    public function update(UpdateGroupRequest $request, Group $group)
     {
-        //
+        $group->update($request->validated());
+        toast('Group updated successfully','success');
+        return to_route('admin.group.index');
+
     }
 
     /**
@@ -79,6 +77,8 @@ class GroupController extends Controller
      */
     public function destroy(Group $group)
     {
-        //
+        $group->delete();
+        toast('Group deleted successfully','success');
+        return back();
     }
 }

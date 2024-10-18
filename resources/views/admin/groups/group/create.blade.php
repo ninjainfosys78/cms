@@ -40,7 +40,7 @@
                 </ul>
                 <div class="flex items-center gap-4">
                     <a href="{{ route('admin.group.index') }}"
-                        class="btn font-medium bg-blue-600 hover:bg-red-600 py-1 text-white" aria-current="page">Group Detail</a>
+                        class="btn font-medium bg-blue-600 hover:bg-red-600 py-1 text-white" aria-current="page">Group List</a>
                 </div>
             </nav>
         </div>
@@ -81,7 +81,6 @@
                                     id="registered_date"
                                     name="registration_date"
                                     type="date"
-                                    placeholder="Enter  registered date"
                                 />
 
                                 <x-forms.TextInput
@@ -101,7 +100,12 @@
                                     placeholder="Enter Vat Pan"
                                 />
 
+                            </div>
+
                               @livewire('dependent-dropdown')
+
+                            <div class="grid grid-cols-2 gap-4">
+
 
                                 <x-forms.TextInput
                                 type="number"

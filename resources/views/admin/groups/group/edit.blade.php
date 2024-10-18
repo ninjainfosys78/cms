@@ -24,7 +24,7 @@
                                 </li>
                                 <li>
                                     <a href="#"
-                                        class="motion-reduce:transition-none-none text-black/60 transition duration-200 hover:text-black/80 hover:ease-in-out focus:text-black/80 active:text-black/80 motion-reduce:transition motion-reduce:transition-none ">Enterprise Person
+                                        class="motion-reduce:transition-none-none text-black/60 transition duration-200 hover:text-black/80 hover:ease-in-out focus:text-black/80 active:text-black/80 motion-reduce:transition motion-reduce:transition-none ">Group
                                         Edit</a>
                                 </li>
                                 <li>
@@ -40,13 +40,13 @@
                 </ul>
                 <div class="flex items-center gap-4">
                     <a href="{{ route('admin.fisicalYear.index') }}"
-                        class="btn font-medium bg-blue-600 hover:bg-red-600 py-1 text-white" aria-current="page">Enterprise Person List</a>
+                        class="btn font-medium bg-blue-600 hover:bg-red-600 py-1 text-white" aria-current="page">Group List</a>
                 </div>
             </nav>
         </div>
         <div class="">
             <div class="flex flex-col gap-6">
-                <h6 class="text-lg text-gray-600 font-semibold">Forms</h6>
+                <h6 class="text-lg text-gray-600 font-semibold">Form</h6>
                 <div class="card">
                     <div class="card-body">
                         <form class="flex flex-col gap-6" action="{{route('admin.group.update', $group)}}" method="POST" enctype="multipart/form-data">
@@ -60,14 +60,7 @@
                                     value="{{ old('name', $group->name) }}"
                                     placeholder='Enter name'
                                 />
-                                {{-- <x-forms.TextInput
-                                    type="tel"
-                                    label="Phone"
-                                    id="phone"
-                                    name="phone"
-                                    value="{{ old('phone', $group->phone) }}"
-                                    placeholder="Enter phone"
-                                /> --}}
+
                                 <x-forms.TextInput
                                     label="Registered Office"
                                     id="registered_office"
@@ -79,9 +72,7 @@
                                     label="Registered Date"
                                     id="registered_date"
                                     name="registration_date"
-                                    type="date"
                                     value="{{ old('registration_date', $group->registration_date) }}"
-                                    placeholder="Enter registered date"
                                 />
                                 <x-forms.TextInput
                                     label="Monthly Meeting"
@@ -99,12 +90,15 @@
                                 />
                             </div>
 
-                            @livewire('address')
+                            <livewire:dependent-dropdown
+                            :selectedProvince="$group->province_id ?? null"
+                            :selectedDistrict="$group->district_id ?? null"
+                            :selectedLocalBody="$group->local_body_id ?? null"
+                            />
 
                             <div class="grid grid-cols-2 gap-4">
                                 <x-forms.TextInput
                                     label="Ward No."
-                                    type='number'
                                     id="ward_no"
                                     name="ward_no"
                                     value="{{ old('ward_no', $group->ward_no) }}"

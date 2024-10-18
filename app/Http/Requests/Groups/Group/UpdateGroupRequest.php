@@ -23,15 +23,15 @@ class UpdateGroupRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['nullab;e', 'string', 'max:255'],
-            'registration_date' => ['nullab;e', 'date'],
-            'registered_office' => ['nullab;e'],
+            'name' => ['nullable', 'string', 'max:255'],
+            'registration_date' => ['nullable', 'date'],
+            'registered_office' => ['nullable'],
             'monthly_meeting' => ['nullable'],
             'vat_pan' => ['nullable'],
-            'province_id' => ['nullab;e', Rule::exists('provinces', 'id')],
-            'district_id' => ['nullab;e', Rule::exists('districts', 'id')],
-            'local_body_id' => ['nullab;e', Rule::exists('local_bodies', 'id')],
-            'ward_no' => ['nullab;e', 'integer'],
+            'province_id' => ['nullable', Rule::exists('provinces', 'id')],
+            'district_id' => ['nullable', Rule::exists('districts', 'id')],
+            'local_body_id' => ['nullable', Rule::exists('local_bodies', 'id')],
+            'ward_no' => ['nullable', 'integer'],
             'village' => ['nullable'],
             'tole' => ['nullable'],
             'farmers' => ['nullable', 'array'],
