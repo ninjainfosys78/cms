@@ -99,6 +99,8 @@
                                 <x-forms.TextInput
                                     label="Position"
                                     id="position"
+                                    type="number"
+                                    min='0'
                                     name="position"
                                     placeholder="Enter position"
                                     value="{{ old('position',$cooperativePerson->position) }}"

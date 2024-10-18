@@ -120,7 +120,8 @@
 
                                 <x-forms.TextInput
                                     label="Ward"
-                                    {{-- type="number" --}}
+                                    type="number"
+                                    min='1'
                                     id="ward_no"
                                     name="ward_no"
                                     placeholder="Enter ward no"

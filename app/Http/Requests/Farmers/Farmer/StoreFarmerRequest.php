@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Farmers;
+namespace App\Http\Requests\Farmers\Farmer;
 
 use App\Enums\Gender;
 use Illuminate\Validation\Rule;

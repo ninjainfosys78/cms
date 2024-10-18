@@ -56,16 +56,17 @@
                                         <h6 class="fw-semibold mb-0">S.No.</h6>
                                     </th>
                                     <th class="border-right-1">
+                                        <h6 class="fw-semibold mb-0">ID</h6>
+                                    </th>
+                                    <th class="border-right-1">
+                                        <h6 class="fw-semibold mb-0">Photo</h6>
+                                    </th>
+                                    <th class="border-right-1">
                                         <h6 class="fw-semibold mb-0">Name</h6>
                                     </th>
                                     <th class="border-right-1">
-                                        <h6 class="fw-semibold mb-0">Registration Number</h6>
+                                        <h6 class="fw-semibold mb-0">Phone Number</h6>
                                     </th>
-                                    <th class="border-right-1">
-                                        <h6 class="fw-semibold mb-0">Vat/Pan</h6>
-                                    </th>
-
-
                                     <th class="border-bottom-0">
                                         <h6 class="fw-semibold mb-0">Action</h6>
                                     </th>
@@ -74,33 +75,36 @@
                             <tbody>
                                 @foreach ($farmers as $farmer)
                                     <tr>
-                                        <td class="border-b border-gray-200">
-                                            <h6 class=" mb-0">{{ $loop->iteration }}</h6>
+                                        <td>
+                                            <h6>{{ $loop->iteration }}</h6>
                                         </td>
-                                        <td class="border-b border-gray-200">
-                                            <h6 class=" mb-1">{{ $farmer->name ?? '' }}</h6>
+                                        <td>
+                                            <h6>{{ $farmer->unique_id ?? '' }}</h6>
                                         </td>
-                                        <td class="border-b border-gray-200">
-                                            <h6 class=" mb-1">{{ $farmer->registration_no ?? '' }}</h6>
+                                        <td>
+                                            <img class="mb-1 w-20"src="{{ $farmer->photo ?? '' }}"/>
                                         </td>
-                                        <td class="border-b border-gray-200">
-                                            <h6 class=" mb-1">{{ $farmer->vat_pan ?? '' }}</h6>
+                                        <td>
+                                            <h6>{{ $farmer->name ?? '' }}</h6>
                                         </td>
-                                        <td class="border-b border-gray-200 gap-2 flex">
-                                            <a href="{{ route('admin.farmer.edit', $farmer) }}"><i
-                                                    class="ti ti-edit text-[18px] text-white hover:bg-blue-500 bg-green-500 p-2 rounded-full"></i></a>
-                                            <a href=""><i class=""></i></a>
+                                        <td>
+                                            <h6>{{ $farmer->phone_no ?? '' }}</h6>
+                                        </td>
+                                        <td>
+                                            <div class="action gap-2 flex items-center">
+                                                <a href="{{ route('admin.farmer.edit', $farmer) }}"><i
+                                                        class="ti ti-edit text-[18px] text-white hover:bg-blue-500 bg-green-500 p-2 rounded-full"></i></a>
 
-
-                                            <form action="{{ route('admin.farmer.destroy', $farmer) }}"
-                                                method="POST" class="inline-block">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit">
-                                                    <i
-                                                        class="ti ti-trash ti ti-trash text-[18px] text-white hover:bg-blue-500 bg-red-500 p-2 rounded-full"></i>
-                                                </button>
-                                            </form>
+                                                <form action="{{ route('admin.farmer.destroy', $farmer) }}"
+                                                    method="POST" class="inline-block">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit">
+                                                        <i
+                                                            class="ti ti-trash ti ti-trash text-[18px] text-white hover:bg-blue-500 bg-red-500 p-2 rounded-full"></i>
+                                                    </button>
+                                                </form>
+                                            </div>
                                         </td>
                                     </tr>
                                 @endforeach

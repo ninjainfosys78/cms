@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Api\V1\Farmers\Farmer;
+namespace App\Http\Requests\Farmers\Farmer;
 
 use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;

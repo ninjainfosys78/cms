@@ -93,6 +93,7 @@
                                 <x-forms.TextInput
                                     label="Position"
                                     type="number"
+                                    min='0'
                                     id="position"
                                     name="position"
                                     placeholder="Enter position"

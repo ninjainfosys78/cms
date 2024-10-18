@@ -152,6 +152,11 @@
                                     name="relationship_status"
                                     :options="$options"
                                 />
+                                <livewire:dependent-dropdown
+                                    :selectedProvince="$cooperative->province_id ?? null"
+                                    :selectedDistrict="$cooperative->district_id ?? null"
+                                    :selectedLocalBody="$cooperative->local_body_id ?? null"
+                                />
 
                                 <x-forms.TextInput
                                     label="Ward No"

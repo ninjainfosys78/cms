@@ -91,11 +91,6 @@
                                     :options="\App\Enums\Gender::cases()"
                                 />
 
-                                {{-- <x-forms.SelectInput
-                                    label="Gender"
-                                    id="gender"
-                                    name="gender"
-                                /> --}}
                                 <x-forms.SelectInput
                                     label="Relationship Status"
                                     id="relationship_status"
@@ -143,16 +138,15 @@
                                     name="phone_no"
                                     placeholder="Enter Phone number"
                                 />
-                                <x-forms.SelectInput
-                                    label="Select Province"
-                                    id="province_id"
-                                    name="province_id"
-                                    :options="$options"
+
+                                <livewire:dependent-dropdown
                                 />
 
                                 <x-forms.TextInput
                                     label="Ward No"
                                     id="ward_no"
+                                    type="number"
+                                    min='1'
                                     name="ward_no"
                                     placeholder="Enter Ward No"
                                 />

@@ -11,6 +11,7 @@ use App\Models\Address\District;
 use App\Models\Address\Province;
 use App\Traits\QueryFilterTrait;
 use App\Models\Address\LocalBody;
+use Illuminate\Http\UploadedFile;
 use App\Models\Grants\GrantDetail;
 use App\Models\Enterprises\Enterprise;
 use Illuminate\Database\Eloquent\Model;
@@ -63,17 +64,38 @@ class Farmer extends Model
         'ward_no' => 'integer',
     ];
 
-    public function getPhotoUrlAttribute(): string
+    // public function getPhotoUrlAttribute(): string
+    // {
+    //     return !empty($this->attributes['photo']) ?
+    //         Storage::disk('public')->url($this->attributes['photo'])
+    //         : asset('images/default.png');
+    // }
+
+    // public function setPhotoAttribute($value)
+    // {
+    //     if (!empty($value) && !is_string($value)) {
+    //         $this->attributes['photo'] = $value->store('farmer/' . Str::slug($this->attributes['first_name'] . $this->attributes['last_name'], '_') . 'farmer', 'public');
+    //     }
+    // }
+    public function getPhotoAttribute(): string
     {
-        return !empty($this->attributes['photo']) ?
-            Storage::disk('public')->url($this->attributes['photo'])
+        return $this->attributes['photo']
+            ? asset('storage/' . $this->attributes['photo'])
             : asset('images/default.png');
     }
 
-    public function setPhotoAttribute($value)
+    /**
+     * Set the profile image attribute.
+     *
+     * @param  mixed  $value
+     * @return void
+     */
+    public function setPhotoAttribute($value): void
     {
-        if (!empty($value) && !is_string($value)) {
-            $this->attributes['photo'] = $value->store('farmer/' . Str::slug($this->attributes['first_name'] . $this->attributes['last_name'], '_') . 'photo', 'public');
+        if ($value instanceof UploadedFile) {
+            $this->attributes['photo'] = $value->store('farmers', 'public');
+        } elseif (is_string($value)) {
+            $this->attributes['photo'] = $value;
         }
     }
 

@@ -3,13 +3,15 @@
 namespace App\Http\Controllers\Admin\Farmers;
 
 use App\Enums\GenderEnums;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\Farmers\Farmer;
 use App\Models\Address\District;
 use App\Models\Address\Province;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Farmers\StoreFarmerRequest;
-use App\Http\Requests\Farmers\UpdateFarmerRequest;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\Farmers\Farmer\StoreFarmerRequest;
+use App\Http\Requests\Farmers\Farmer\UpdateFarmerRequest;
 
 class FarmerController extends Controller
 {
@@ -37,40 +39,56 @@ class FarmerController extends Controller
     /**
      * Store a newly created resource in storage.
      */
+    // public function store(StoreFarmerRequest $request)
+    // {
+    //     // dd($request->toArray());
+    //     Farmer::create($request->validated()+['user_id'=>Auth::user()->id,'unique_id'=>Str::isUuid(),]);
+    //     toast('Farmer added Successfully','success');
+    //     return to_route('admin.farmers.index');
+    // }
     public function store(StoreFarmerRequest $request)
     {
-        dd($request->toArray());
-        Farmer::create($request->validated());
+        // dd($request->toArray());
+        Farmer::create(array_merge(
+            $request->validated(),
+            [
+                'user_id' => Auth::user()->id,
+                'unique_id' => Str::random(8), // This generates a unique UUID
+            ]
+        ));
 
-        toast('Farmer Cooperative added Successfully','success');
-        return to_route('admin.farmers.index');
+        toast('Farmer added Successfully', 'success');
+        return to_route('admin.farmer.index');
     }
+
+
+
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Farmer $farmerCooperative)
+    public function edit(Farmer $farmer)
     {
-        return view('admin.farmers.farmer.edit',compact('farmerCooperative'));
+        return view('admin.farmers.farmer.edit',compact('farmer'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update( $request, Farmer $farmerCooperative)
+    public function update(UpdateFarmerRequest $request, Farmer $farmer)
     {
-        $farmerCooperative->update($request->validated());
-        toast('Farmer Cooperative updated successfully','success');
-        return to_route('admin.farmers.index');
+        $farmer->update($request->validated());
+        toast('Farmer updated successfully','success');
+        return back();
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Farmer $farmerCooperative)
+    public function destroy(Farmer $farmer)
     {
-        $farmerCooperative->delete();
-        toast('Grant Office deleted successfully','success');
+        $farmer->delete();
+        toast('Farmer deleted successfully','success');
         return back();
     }
 }

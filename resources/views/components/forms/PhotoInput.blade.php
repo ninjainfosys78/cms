@@ -11,7 +11,7 @@
 <div class="mb-3">
     <label
         for="photo"
-        class="mb-2 inline-block text-black"
+        class="block text-sm font-semibold mb-2 text-gray-600"
     >{{$label}}</label
     >
     <input

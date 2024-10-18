@@ -89,6 +89,7 @@
                                 <x-forms.TextInput
                                     label="Grant amount"
                                     type="number"
+                                    min='1'
                                     id="grant_amount"
                                     name="grant_amount"
                                     placeholder="Enter grant amount"
