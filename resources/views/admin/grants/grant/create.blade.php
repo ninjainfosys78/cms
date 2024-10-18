@@ -73,14 +73,14 @@
                                     id="grant_type_id"
                                     name="grant_type_id"
                                     :options="$grantTypes"
-                                    />
-                                    <x-forms.SelectInput
+                                />
+                                <x-forms.SelectInput
                                     label="Grant Office"
                                     id="grant_office_id"
                                     name="grant_office_id"
                                     :options="$grantOffice"
-                                    />
-                                    <x-forms.SelectInput
+                                />
+                                <x-forms.SelectInput
                                     label="Grant Program"
                                     id="grant_program_id"
                                     name="grant_program_id"
@@ -103,7 +103,7 @@
                                     label="Other"
                                     id="other"
                                     name="other"
-                                    placeholder="other"
+                                    placeholder="Other"
                                 />
 
                                 <x-forms.TextInput
