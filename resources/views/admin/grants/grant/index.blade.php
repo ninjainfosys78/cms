@@ -58,7 +58,7 @@
                                     </th>
 
                                     <th class="border-right-1">
-                                        <h6 class="fw-semibold mb-0">Grant For</h6>
+                                        <h6 class="fw-semibold mb-0">Grant Type</h6>
                                     </th>
 
                                     <th class="border-right-1">
@@ -79,7 +79,7 @@
                                         </td>
 
                                         <td class="border-b border-gray-200">
-                                            <h6 class=" mb-1">{{ $grant->grant_for ?? '' }}</h6>
+                                            <h6 class=" mb-1">{{ $grant->grantType->title ?? '' }}</h6>
                                         </td>
 
                                         <td class="border-b border-gray-200">

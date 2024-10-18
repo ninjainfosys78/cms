@@ -24,7 +24,7 @@
                                 </li>
                                 <li>
                                     <a href="#"
-                                        class="motion-reduce:transition-none-none text-black/60 transition duration-200 hover:text-black/80 hover:ease-in-out focus:text-black/80 active:text-black/80 motion-reduce:transition motion-reduce:transition-none ">Cooperative
+                                        class="motion-reduce:transition-none-none text-black/60 transition duration-200 hover:text-black/80 hover:ease-in-out focus:text-black/80 active:text-black/80 motion-reduce:transition motion-reduce:transition-none ">Grant
                                         List</a>
                                 </li>
                                 <li>
@@ -39,8 +39,8 @@
                     </li>
                 </ul>
                 <div class="flex items-center gap-4">
-                    <a href="{{ route('admin.cooperative.index') }}"
-                        class="btn font-medium bg-blue-600 hover:bg-red-600 py-1 text-white" aria-current="page">Cooperative List</a>
+                    <a href="{{ route('admin.grant.index') }}"
+                        class="btn font-medium bg-blue-600 hover:bg-red-600 py-1 text-white" aria-current="page">Grant List</a>
                 </div>
             </nav>
         </div>
@@ -49,75 +49,73 @@
                 <h6 class="text-lg text-gray-600 font-semibold">Forms</h6>
                 <div class="card">
                     <div class="card-body">
-                        <form class="flex flex-col gap-6" action="{{route('admin.cooperative.store')}}" method="POST"
+                        @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                        <form class="flex flex-col gap-6" action="{{route('admin.grant.store')}}" method="POST"
                               enctype="multipart/form-data">
                             @csrf
                             <div class="grid grid-cols-2 gap-4">
+                                <x-forms.SelectInput
+                                    label="Fisical Year"
+                                    id="fisical_year_id"
+                                    name="fisical_year_id"
+                                    :options="$fisicalYears"
+                                />
+                                <x-forms.SelectInput
+                                    label="Grant Type"
+                                    id="grant_type_id"
+                                    name="grant_type_id"
+                                    :options="$grantTypes"
+                                    />
+                                    <x-forms.SelectInput
+                                    label="Grant Office"
+                                    id="grant_office_id"
+                                    name="grant_office_id"
+                                    :options="$grantOffice"
+                                    />
+                                    <x-forms.SelectInput
+                                    label="Grant Program"
+                                    id="grant_program_id"
+                                    name="grant_program_id"
+                                    :options="$grantProgram"
+                                />
                                 <x-forms.TextInput
-                                    label="Name"
-                                    id="name"
-                                    name="name"
+                                    label="Grant amount"
+                                    type="number"
+                                    id="grant_amount"
+                                    name="grant_amount"
+                                    placeholder="Enter grant amount"
+                                />
+                                <x-forms.TextInput
+                                    label="Grant for"
+                                    id="grant_for"
+                                    name="grant_for"
                                     placeholder="Enter name"
                                 />
-                                <x-forms.SelectInput
-                                    label="Cooperative Type"
-                                    id="cooperative_type_id"
-                                    name="cooperative_type_id"
-                                    :options="$cooperativeTypes"
+                                <x-forms.TextInput
+                                    label="Other"
+                                    id="other"
+                                    name="other"
+                                />
+
+                                <x-forms.TextInput
+                                    label="Main activity"
+                                    id="main_activity"
+                                    name="main_activity"
+                                    placeholder="Enter main activity"
                                 />
                                 <x-forms.TextInput
-                                    label="Registration Number"
-                                    id="registration_no"
-                                    name="registration_no"
-                                    placeholder="Enter registration no"
-                                />
-                                <x-forms.TextInput
-                                    label="Registration Date"
-                                    id="registration_date"
-                                    name="registration_date"
-                                    placeholder="Enter registration_date"
-                                />
-                                <x-forms.TextInput
-                                    label="Vat/Pan"
-                                    id="vat_pan"
-                                    name="vat_pan"
-                                    placeholder="Enter vat/pan"
-                                />
-                                <x-forms.TextInput
-                                    label="Objective"
-                                    id="objective"
-                                    name="objective"
-                                    placeholder="Enter objective"
-                                />
-                                <x-forms.SelectInput
-                                    label="Affiliation ID"
-                                    id="affiliation_id"
-                                    name="affiliation_id"
-                                    :options="$affiliationTypes"
-                                />
-                                {{-- @livewire('dependent-dropdown') --}}
-                                {{-- @livewire('dependent-dropdown') --}}
-                                <livewire:DependentDropdown
-                                />
-                                <x-forms.TextInput
-                                    label="Ward"
-                                    type="number"
-                                    min="1"
-                                    id="ward"
-                                    name="ward"
-                                    placeholder="Enter ward"
-                                />
-                                <x-forms.TextInput
-                                    label="Village"
-                                    id="village"
-                                    name="village"
-                                    placeholder="Enter village"
-                                />
-                                <x-forms.TextInput
-                                    label="Tole"
-                                    id="tole"
-                                    name="tole"
-                                    placeholder="Enter tole"
+                                    label="Remarks"
+                                    id="remarks"
+                                    name="remarks"
+                                    placeholder="Enter remarks"
                                 />
                             </div>
                             {{-- <div class="">

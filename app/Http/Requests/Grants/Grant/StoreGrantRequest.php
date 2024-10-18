@@ -2,8 +2,8 @@
 
 namespace App\Http\Requests\Grants\Grant;
 
-use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
+use Illuminate\Foundation\Http\FormRequest;
 
 class StoreGrantRequest extends FormRequest
 {
@@ -23,12 +23,12 @@ class StoreGrantRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'fiscal_year_id' => ['required', Rule::exists('fiscal_years', 'id')->withoutTrashed()],
+            'fisical_year_id' => ['required', Rule::exists('fisical_years', 'id')->withoutTrashed()],
             'grant_type_id' => ['required', Rule::exists('grant_types', 'id')->withoutTrashed()],
             'grant_office_id' => ['required', Rule::exists('grant_offices', 'id')->withoutTrashed()],
             'grant_program_id' => ['required', Rule::exists('grant_programs', 'id')->withoutTrashed()],
             'grant_amount' => ['required', 'numeric'],
-            'grant_for' => ['required', Rule::in(config('enums.grant_for'))],
+            'grant_for' => ['required', 'string'],
             'other' => ['required_if:grant_for,Other'],
             'main_activity' => ['nullable'],
             'remarks' => ['nullable'],
