@@ -58,9 +58,10 @@
                                 </ul>
                             </div>
                         @endif
-                        <form class="flex flex-col gap-6" action="{{ route('admin.enterprise.store') }}" method="POST"
+                        <form class="flex flex-col gap-6" action="{{ route('admin.enterprise.update',$enterprise) }}" method="POST"
                             enctype="multipart/form-data">
                             @csrf
+                            @method('PUT')
                             <div class="grid grid-cols-2 gap-4">
                                 <x-forms.SelectInput label="Enterprise Type" id="enterprise_type_id"
                                     name="enterprise_type_id" :options="$enterpriseTypes"
@@ -90,7 +91,9 @@
                                     value="{{old('village',$enterprise->village)}}"
                                     />
 
-                                <x-forms.TextInput label="Tole" id="tole" name="tole" placeholder="Enter Tole" />
+                                <x-forms.TextInput label="Tole" id="tole" name="tole" placeholder="Enter Tole"
+                                value="{{old('ward_no',$enterprise->tole)}}"
+                                />
 
                             </div>
 

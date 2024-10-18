@@ -68,19 +68,14 @@
                                     name="name"
                                     placeholder='Enter name'
                                 />
-                                {{-- <x-forms.TextInput
-                                    type="tel"
-                                    label="Phone"
-                                    id="phone"
-                                    name="phone"
-                                    placeholder="Enter  phone"
-                                /> --}}
+
                                 <x-forms.TextInput
                                     label="Registered Office"
                                     id="registered_office"
                                     name="registered_office"
                                     placeholder="Enter  Office"
                                 />
+
                                 <x-forms.TextInput
                                     label="Registered Date"
                                     id="registered_date"
@@ -88,6 +83,7 @@
                                     type="date"
                                     placeholder="Enter  registered date"
                                 />
+
                                 <x-forms.TextInput
                                     label="Monthly Meeting"
                                     id="monthly_meeting"
@@ -95,6 +91,7 @@
                                     value="{{ old('monthly_meeting') }}"
                                     placeholder="Enter Monthly meeting"
                                 />
+
                                 <x-forms.TextInput
 
                                     label="Vat/Pan"
@@ -103,26 +100,12 @@
 
                                     placeholder="Enter Vat Pan"
                                 />
-                         </div>
-                              @livewire('address',['group' => $group])
 
-                                <x-forms.SelectInput
-                                label="Select District"
-                                id="district_id"
-                                name="district_id"
-                                {{-- :options="$options" --}}
-                                />
-
-                                <x-forms.SelectInput
-                                label="Select Local Body"
-                                id="local_body_id"
-                                name="local_body_id"
-                                {{-- :options="$options" --}}
-                                />
+                              @livewire('dependent-dropdown')
 
                                 <x-forms.TextInput
                                 type="number"
-                                label="Select Ward No."
+                                label="Ward"
                                 id="ward_no"
                                 name="ward_no"/>
 

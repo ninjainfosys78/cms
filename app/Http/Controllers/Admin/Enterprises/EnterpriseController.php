@@ -8,8 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Enterprises\Enterprise;
 use App\Models\Setting\Types\EnterpriseType;
 use App\Http\Requests\Enterprises\Enterprise\StoreEnterpriseRequest;
-use App\Http\Requests\Enterprises\EnterprisePerson\UpdateEnterpriseRequest;
-use App\Http\Requests\Setting\Types\Enterprise\UpdateEnterpriseTypeRequest;
+use App\Http\Requests\Enterprises\Enterprise\UpdateEnterpriseRequest;
 
 class EnterpriseController extends Controller
 {
@@ -65,6 +64,7 @@ class EnterpriseController extends Controller
      */
     public function update(UpdateEnterpriseRequest $request, Enterprise $enterprise)
     {
+        // dd($request);
         $enterprise->update($request->validated());
         toast('Enterprise updated successfully','success');
         return to_route('admin.enterprise.index');
