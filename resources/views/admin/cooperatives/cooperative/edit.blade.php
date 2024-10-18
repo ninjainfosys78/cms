@@ -63,62 +63,53 @@
                             @csrf
                             <div class="grid grid-cols-2 gap-4">
                                 <x-forms.TextInput
-                                    label="Name"
-                                    id="name"
-                                    name="name"
-                                    placeholder="Enter cooperative name"
-                                    value="{{ old('name',$cooperative->name) }}"
+                                    label="Cooperative"
+                                    id="year"
+                                    name="year"
+                                    placeholder="Enter year 2080/81"
                                 />
-                                {{-- {{ $cooperative->cooperative_type_id }} --}}
                                 <x-forms.SelectInput
                                     label="Cooperative Type"
                                     id="cooperative_type_id"
                                     name="cooperative_type_id"
-                                    :options="$cooperativeTypes"
-                                    selected="{{ $cooperative->cooperative_type_id }}"
+                                    :options="Cooperative Type"
                                 />
                                 <x-forms.TextInput
                                     label="Registration Number"
                                     id="registration_no"
                                     name="registration_no"
-                                    placeholder="Enter registration no"
-                                    value="{{ old('name',$cooperative->registration_no) }}"
+                                    placeholder="Enter registration no 2080/81"
                                 />
                                 <x-forms.TextInput
                                     label="Registration Date"
                                     id="registration_date"
                                     name="registration_date"
-                                    placeholder="Enter registration date"
-                                    value="{{ old('name',$cooperative->registration_date) }}"
+                                    placeholder="Enter registration_date 2080/81"
                                 />
                                 <x-forms.TextInput
                                     label="Vat/Pan"
                                     id="vat_pan"
                                     name="vat_pan"
                                     placeholder="Enter vat/pan"
-                                    value="{{ old('name',$cooperative->vat_pan) }}"
                                 />
                                 <x-forms.TextInput
                                     label="Objective"
                                     id="objective"
                                     name="objective"
-                                    placeholder="Enter objective"
-                                    value="{{ old('name',$cooperative->objective) }}"
+                                    placeholder="Enter objective 2080/81"
                                 />
                                 <x-forms.TextInput
                                     label="Affiliation ID"
                                     id="affiliation_id"
                                     name="affiliation_id"
                                     placeholder="Enter affiliation id"
-                                    value="{{ old('name',$cooperative->affiliation_id) }}"
                                 />
-
-                                <livewire:dependent-dropdown
-                                    :selectedProvince="$cooperative->province_id ?? null"
-                                    :selectedDistrict="$cooperative->district_id ?? null"
-                                    :selectedLocalBody="$cooperative->local_body_id ?? null"
+                                <x-forms.SelectInput
+                                    label="Province"
+                                    id="province_id"
+                                    name="province_id"
+                                    placeholder="Enter province_id 2080/81"
                                 />
-                                {{-- @livewire('dependent-dropdown') --}}
                             </div>
                             <div class="col-md-12">
                                 <button type="submit" class="btn btn-sm btn-primary">

@@ -1,4 +1,5 @@
 <div class="grid grid-cols-3 gap-4">
+
     <div>
         <label for="province text-bold">Province</label>
         <select wire:model="selectedProvince" id="province" name="province_id" class="form-control" wire:change="changeSelectedProvince">
