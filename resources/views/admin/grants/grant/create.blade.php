@@ -103,6 +103,7 @@
                                     label="Other"
                                     id="other"
                                     name="other"
+                                    placeholder="other"
                                 />
 
                                 <x-forms.TextInput
