@@ -1,4 +1,4 @@
-<div class="grid grid-cols-3 gap-4">
+<div class="grid grid-cols-2 gap-4">
 
     <div>
         <label for="province text-bold">Province</label>
