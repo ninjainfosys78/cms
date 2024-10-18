@@ -2,33 +2,28 @@
 
 namespace App\Models\Enterprises;
 
-use App\Models\Address\District;
-use App\Models\Address\LocalBody;
-use App\Models\Address\Province;
-use App\Models\Setting\Types\EnterpriseType;
 use App\Models\User;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Address\District;
+use App\Models\Address\Province;
+use App\Models\Address\LocalBody;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\MorphMany;
-
+use App\Models\Setting\Types\EnterpriseType;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Enterprise extends Model
 {
     use HasFactory, SoftDeletes;
     // QueryFilterTrait, GetAllColumns;
 
-    protected $dates = [
-        'created_at',
-        'updated_at',
-        'deleted_at',
-    ];
-
     protected $fillable = [
         'unique_id',
+        'enterprise_type_id',
         'name',
         'vat_pan',
         'province_id',

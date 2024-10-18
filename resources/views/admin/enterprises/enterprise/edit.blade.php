@@ -11,7 +11,6 @@
                             <i class="ti ti-menu-2 relative z-1"></i>
                         </a>
                     </li>
-
                     <li class="relative">
                         <nav class="w-full rounded-md" aria-label="breadcrumb">
                             <ol class="list-reset ms-2 flex">
@@ -25,7 +24,7 @@
                                 <li>
                                     <a href="#"
                                         class="motion-reduce:transition-none-none text-black/60 transition duration-200 hover:text-black/80 hover:ease-in-out focus:text-black/80 active:text-black/80 motion-reduce:transition motion-reduce:transition-none ">Enterprise
-                                        Edit</a>
+                                        List</a>
                                 </li>
                                 <li>
                                     <span class="mx-2 text-black/60">/</span>
@@ -39,8 +38,9 @@
                     </li>
                 </ul>
                 <div class="flex items-center gap-4">
-                    <a href="{{ route('admin.fisicalYear.index') }}"
-                        class="btn font-medium bg-blue-600 hover:bg-red-600 py-1 text-white" aria-current="page">Enterprise List</a>
+                    <a href="{{ route('admin.enterprise.index') }}"
+                        class="btn font-medium bg-blue-600 hover:bg-red-600 py-1 text-white" aria-current="page">Enterprises
+                        List</a>
                 </div>
             </nav>
         </div>
@@ -49,22 +49,50 @@
                 <h6 class="text-lg text-gray-600 font-semibold">Forms</h6>
                 <div class="card">
                     <div class="card-body">
-                        <form class="flex flex-col gap-6" action="{{route('admin.enterprise.update',$enterprise)}}" method="POST"
-                              enctype="multipart/form-data">
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+                        <form class="flex flex-col gap-6" action="{{ route('admin.enterprise.update',$enterprise) }}" method="POST"
+                            enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
                             <div class="grid grid-cols-2 gap-4">
-                                <x-forms.TextInput
-                                    label="Enterprise Name"
-                                    id="name"
-                                    name="name"
+                                <x-forms.SelectInput label="Enterprise Type" id="enterprise_type_id"
+                                    name="enterprise_type_id" :options="$enterpriseTypes"
+                                    value="{{old('enterprise_type_id',$enterprise->enterprise_type_id)}}"
+                                    />
+                                <x-forms.TextInput label="Enterprise Name" id="name" name="name"
                                     placeholder="Enter name"
-                                />
-                                <x-forms.TextInput
-                                    label="Vat Pan"
-                                    id="vat_pan"
-                                    name="vat_pan"
+                                    value="{{old('name',$enterprise->name)}}"
+                                    />
+                                <x-forms.TextInput label="Vat Pan" id="vat_pan" name="vat_pan"
                                     placeholder="Enter vat pan"
+                                    value="{{old('vat_pan',$enterprise->vat_pan)}}"
+                                    />
+
+                                <livewire:dependent-dropdown
+                                :selectedProvince="$enterprise->province_id ?? null"
+                                :selectedDistrict="$enterprise->district_id ?? null"
+                                :selectedLocalBody="$enterprise->local_body_id ?? null"
+                                />
+
+                                <x-forms.TextInput label="Ward" name="ward_no"
+                                value="{{old('ward_no',$enterprise->ward_no)}}"
+                                />
+
+                                <x-forms.TextInput label="Village " id="village" name="village"
+                                    placeholder="Enter Village"
+                                    value="{{old('village',$enterprise->village)}}"
+                                    />
+
+                                <x-forms.TextInput label="Tole" id="tole" name="tole" placeholder="Enter Tole"
+                                value="{{old('ward_no',$enterprise->tole)}}"
                                 />
 
                             </div>

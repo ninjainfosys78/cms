@@ -85,7 +85,7 @@
                                     value="{{old('name',$enterprisePerson->designation)}}"
                                 />
                                 <x-forms.TextInput
-                                    type="number"
+                                    {{-- type="number" --}}
                                     label="Position"
                                     id="position"
                                     name="position"

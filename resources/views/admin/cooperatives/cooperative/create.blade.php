@@ -49,6 +49,15 @@
                 <h6 class="text-lg text-gray-600 font-semibold">Forms</h6>
                 <div class="card">
                     <div class="card-body">
+                        @if ($errors->any())
+                                    <div class="alert alert-danger">
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
                         <form class="flex flex-col gap-6" action="{{route('admin.cooperative.store')}}" method="POST"
                               enctype="multipart/form-data">
                             @csrf
@@ -89,20 +98,32 @@
                                     name="objective"
                                     placeholder="Enter objective"
                                 />
-                                <x-forms.TextInput
+                                <x-forms.SelectInput
                                     label="Affiliation ID"
                                     id="affiliation_id"
                                     name="affiliation_id"
-                                    placeholder="Enter affiliation id"
+                                    :options="$affiliationTypes"
                                 />
-                                <x-forms.SelectInput
-                                    label="Province"
-                                    id="province_id"
-                                    name="province_id"
-                                    placeholder="Enter province"
+                                {{-- @livewire('dependent-dropdown') --}}
+                                {{-- @livewire('dependent-dropdown') --}}
+                                <livewire:DependentDropdown
+                                />
+                                <x-forms.TextInput
+                                    label="Ward"
+                                    id="ward"
+                                    name="ward"
+                                    placeholder="Enter ward"
+                                />
+                                <x-forms.TextInput
+                                    label="Village"
+                                    id="village"
+                                    name="village"
+                                    placeholder="Enter village"
                                 />
                             </div>
-
+                            {{-- <div class="">
+                                <livewire:DependentDropdown />
+                            </div> --}}
                             <div class="col-md-12">
                                 <button type="submit" class="btn btn-sm btn-primary">
                                     Submit

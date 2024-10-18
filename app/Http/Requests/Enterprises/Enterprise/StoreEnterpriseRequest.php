@@ -2,8 +2,8 @@
 
 namespace App\Http\Requests\Enterprises\Enterprise;
 
-use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
+use Illuminate\Foundation\Http\FormRequest;
 
 class StoreEnterpriseRequest extends FormRequest
 {
@@ -26,12 +26,12 @@ class StoreEnterpriseRequest extends FormRequest
             'enterprise_type_id' => ['required', Rule::exists('enterprise_types', 'id')->withoutTrashed()],
             'name' => ['required', 'string', 'max:255'],
             'vat_pan' => ['nullable'],
-            'address.province_id' => ['required', Rule::exists('provinces', 'id')],
-            'address.district_id' => ['required', Rule::exists('districts', 'id')],
-            'address.local_body_id' => ['required', Rule::exists('local_bodies', 'id')],
-            'address.ward_no' => ['required', 'integer'],
-            'address.village' => ['nullable'],
-            'address.tole' => ['nullable'],
+            'province_id' => ['required', Rule::exists('provinces', 'id')],
+            'district_id' => ['required', Rule::exists('districts', 'id')],
+            'local_body_id' => ['required', Rule::exists('local_bodies', 'id')],
+            'ward_no' => ['required', 'integer'],
+            'village' => ['nullable'],
+            'tole' => ['nullable'],
             'farmers' => ['nullable', 'array'],
             'farmers.*' => [Rule::exists('farmers', 'id')->withoutTrashed()],
         ];

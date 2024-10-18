@@ -24,8 +24,11 @@
                                 </li>
                                 <li>
                                     <a href="#"
-                                        class="motion-reduce:transition-none-none text-black/60 transition duration-200 hover:text-black/80 hover:ease-in-out focus:text-black/80 active:text-black/80 motion-reduce:transition motion-reduce:transition-none ">fisical Year
-                                        List</a>
+                                        class="motion-reduce:transition-none-none
+                                         text-black/60 transition duration-200 hover:text-black/80 hover:ease-in-out
+                                          focus:text-black/80 active:text-black/80 motion-reduce:transition
+                                          motion-reduce:transition-none ">Affiliation
+                                        </a>
                                 </li>
                                 <li>
                                     <span class="mx-2 text-black/60">/</span>
@@ -39,8 +42,8 @@
                     </li>
                 </ul>
                 <div class="flex items-center gap-4">
-                    <a href="{{ route('admin.fisicalyear.index') }}"
-                        class="btn font-medium bg-blue-600 hover:bg-red-600 py-1 text-white" aria-current="page">Enterprise Detail</a>
+                    <a href="{{ route('admin.affiliation.index') }}"
+                        class="btn font-medium bg-blue-600 hover:bg-red-600 py-1 text-white" aria-current="page">Affiliation List</a>
                 </div>
             </nav>
         </div>
@@ -49,29 +52,18 @@
                 <h6 class="text-lg text-gray-600 font-semibold">Forms</h6>
                 <div class="card">
                     <div class="card-body">
-                        <form class="flex flex-col gap-6" action="{{route('admin.fisicalyear.store')}}" method="POST"
+                        <form class="flex flex-col gap-6" action="{{route('admin.affiliation.store')}}" method="POST"
                               enctype="multipart/form-data">
                             @csrf
                             <div class="grid grid-cols-2 gap-4">
                                 <x-forms.TextInput
-                                    label="Enterprise Name"
+                                    label="Affilitation Name "
                                     id="name"
                                     name="name"
+                                    value="{{ old('name') }}"
                                     placeholder="Enter name"
-                                />
-                                <x-forms.TextInput
-                                    label="Vat Name"
-                                    id="vat_pan"
-                                    name="vat_pan"
-                                    placeholder="Enter vat pan"
-                                />
-                                <x-forms.TextInput
-                                    label="Enterprise Type"
-                                    id="enterprise_type"
-                                    name="enterprise_type"
-                                    placeholder="Enter Enterprise Type"
-                                />
 
+                                />
 
                             </div>
 
@@ -85,11 +77,6 @@
                 </div>
             </div>
         </div>
-
-
-
-
-
 
     </div>
 @endsection

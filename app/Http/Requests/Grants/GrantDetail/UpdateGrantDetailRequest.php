@@ -2,8 +2,8 @@
 
 namespace App\Http\Requests\Grants\GrantDetail;
 
-use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
+use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateGrantDetailRequest extends FormRequest
 {
@@ -31,12 +31,12 @@ class UpdateGrantDetailRequest extends FormRequest
             'prev_fiscal_year_id' => ['nullable', Rule::exists('fiscal_years', 'id')->withoutTrashed()],
             'investment_amount' => ['nullable', 'numeric'],
             'remarks' => ['nullable'],
-            'address.province_id' => ['nullable', Rule::exists('provinces', 'id')],
-            'address.district_id' => ['nullable', Rule::exists('districts', 'id')],
-            'address.local_body_id' => ['nullable', Rule::exists('local_bodies', 'id')],
-            'address.ward_no' => ['nullable', 'integer'],
-            'address.village' => ['nullable'],
-            'address.tole' => ['nullable'],
+            'province_id' => ['nullable', Rule::exists('provinces', 'id')],
+            'district_id' => ['nullable', Rule::exists('districts', 'id')],
+            'local_body_id' => ['nullable', Rule::exists('local_bodies', 'id')],
+            'ward_no' => ['nullable', 'integer'],
+            'village' => ['nullable'],
+            'tole' => ['nullable'],
             'kitta_no' => ['nullable'],
             'contact_person' => ['nullable'],
             'contact' => ['nullable'],

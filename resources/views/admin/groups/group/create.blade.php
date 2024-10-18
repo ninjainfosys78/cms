@@ -68,19 +68,14 @@
                                     name="name"
                                     placeholder='Enter name'
                                 />
-                                {{-- <x-forms.TextInput
-                                    type="tel"
-                                    label="Phone"
-                                    id="phone"
-                                    name="phone"
-                                    placeholder="Enter  phone"
-                                /> --}}
+
                                 <x-forms.TextInput
                                     label="Registered Office"
                                     id="registered_office"
                                     name="registered_office"
                                     placeholder="Enter  Office"
                                 />
+
                                 <x-forms.TextInput
                                     label="Registered Date"
                                     id="registered_date"
@@ -88,6 +83,7 @@
                                     type="date"
                                     placeholder="Enter  registered date"
                                 />
+
                                 <x-forms.TextInput
                                     label="Monthly Meeting"
                                     id="monthly_meeting"
@@ -95,6 +91,7 @@
                                     value="{{ old('monthly_meeting') }}"
                                     placeholder="Enter Monthly meeting"
                                 />
+
                                 <x-forms.TextInput
 
                                     label="Vat/Pan"
@@ -103,19 +100,17 @@
 
                                     placeholder="Enter Vat Pan"
                                 />
-                         </div>
-                              @livewire('address',['group' => $group])
 
-                            <div class="grid grid-cols-2 gap-4">
+                              @livewire('dependent-dropdown')
+
                                 <x-forms.TextInput
-                                label="Ward No."
-                                type='number'
+                                type="number"
+                                label="Ward"
                                 id="ward_no"
-                                name="ward_no"
+                                name="ward_no"/>
 
-                                />
                                 <x-forms.TextInput
-                                label="Vilage Name"
+                                label="Vilage"
                                 id="village"
                                 name='village'
                                 placeholder="Enter village Name"

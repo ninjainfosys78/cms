@@ -57,7 +57,10 @@
                                         <h6 class="fw-semibold mb-0">S.No.</h6>
                                     </th>
                                     <th class="border-right-1">
-                                        <h6 class="fw-semibold mb-0">Enterprise Name</h6>
+                                        <h6 class="fw-semibold mb-0">Name</h6>
+                                    </th>
+                                    <th class="border-right-1">
+                                        <h6 class="fw-semibold mb-0">Enterprise Type</h6>
                                     </th>
                                     <th class="border-right-1">
                                         <h6 class="fw-semibold mb-0">Vat Pan</h6>
@@ -77,6 +80,9 @@
                                         </td>
                                         <td class="border-b border-gray-200">
                                             <h6 class=" mb-1">{{ $enterprise->name ?? '' }}</h6>
+                                        </td>
+                                        <td class="border-b border-gray-200">
+                                            <h6 class=" mb-1">{{ $enterprise->enterpriseType->title ?? '' }}</h6>
                                         </td>
                                         <td class="border-b border-gray-200">
                                             <h6 class=" mb-1">{{ $enterprise->vat_pan ?? '' }}</h6>

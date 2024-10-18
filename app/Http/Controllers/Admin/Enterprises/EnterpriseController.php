@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers\Admin\Enterprises;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\Enterprises\Enterprise\StoreEnterpriseRequest;
-use App\Models\Enterprises\Enterprise;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Enterprises\Enterprise;
+use App\Models\Setting\Types\EnterpriseType;
+use App\Http\Requests\Enterprises\Enterprise\StoreEnterpriseRequest;
+use App\Http\Requests\Enterprises\Enterprise\UpdateEnterpriseRequest;
 
 class EnterpriseController extends Controller
 {
@@ -14,7 +17,7 @@ class EnterpriseController extends Controller
      */
     public function index()
     {
-        $enterprises = Enterprise::all();
+        $enterprises = Enterprise::with('enterpriseType')->get();
         return view('admin.enterprises.enterprise.index',compact('enterprises'));
     }
 
@@ -23,7 +26,9 @@ class EnterpriseController extends Controller
      */
     public function create()
     {
-        return view('admin.enterprises.enterprise.create');
+        $options = EnterpriseType::all();
+        $enterpriseTypes = $options->pluck('title','id')->toArray();
+        return view('admin.enterprises.enterprise.create',compact('enterpriseTypes'));
     }
 
     /**
@@ -31,7 +36,7 @@ class EnterpriseController extends Controller
      */
     public function store(StoreEnterpriseRequest $request)
     {
-        Enterprise::create($request->validated());
+        Enterprise::create($request->validated()+["user_id"=>Auth::user()->id]);
         toast('Enterprise added Successfully','success');
         return to_route('admin.enterprise.create');
     }
@@ -49,15 +54,20 @@ class EnterpriseController extends Controller
      */
     public function edit(Enterprise $enterprise)
     {
-        //
+        $options = EnterpriseType::all();
+        $enterpriseTypes = $options->pluck('title','id')->toArray();
+        return view('admin.enterprises.enterprise.edit',compact('enterpriseTypes','enterprise'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Enterprise $enterprise)
+    public function update(UpdateEnterpriseRequest $request, Enterprise $enterprise)
     {
-        //
+        // dd($request);
+        $enterprise->update($request->validated());
+        toast('Enterprise updated successfully','success');
+        return to_route('admin.enterprise.index');
     }
 
     /**
@@ -65,6 +75,8 @@ class EnterpriseController extends Controller
      */
     public function destroy(Enterprise $enterprise)
     {
-        //
+        $enterprise->delete();
+        toast('Enterprise deleted successfully','success');
+        return back();
     }
 }

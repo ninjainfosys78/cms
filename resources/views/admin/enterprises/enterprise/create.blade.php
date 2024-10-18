@@ -39,8 +39,8 @@
                 </ul>
                 <div class="flex items-center gap-4">
                     <a href="{{ route('admin.enterprise.index') }}"
-                        class="btn font-medium bg-blue-600 hover:bg-red-600 py-1 text-white"
-                        aria-current="page">Enterprises</a>
+                        class="btn font-medium bg-blue-600 hover:bg-red-600 py-1 text-white" aria-current="page">Enterprises
+                        List</a>
                 </div>
             </nav>
         </div>
@@ -49,42 +49,33 @@
                 <h6 class="text-lg text-gray-600 font-semibold">Forms</h6>
                 <div class="card">
                     <div class="card-body">
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
                         <form class="flex flex-col gap-6" action="{{ route('admin.enterprise.store') }}" method="POST"
                             enctype="multipart/form-data">
                             @csrf
                             <div class="grid grid-cols-2 gap-4">
+                                <x-forms.SelectInput label="Enterprise Type" id="enterprise_type_id"
+                                    name="enterprise_type_id" :options="$enterpriseTypes" />
                                 <x-forms.TextInput label="Enterprise Name" id="name" name="name"
                                     placeholder="Enter name" />
                                 <x-forms.TextInput label="Vat Pan" id="vat_pan" name="vat_pan"
                                     placeholder="Enter vat pan" />
-                                <!-- Province Dropdown -->
-                                <x-forms.SelectInput label="Province" id="province_id" name="province_id">
-                                    <option value="">Select Province</option>
-                                    @foreach ($provinces as $province)
-                                        <option value="{{ $province->id }}">{{ $province->name }}</option>
-                                    @endforeach
-                                </x-forms.SelectInput>
 
-                                <!-- District Dropdown -->
-                                <x-forms.SelectInput label="District" id="district_id" name="district_id">
-                                    <option value="">Select District</option>
-                                    @foreach ($districts as $district)
-                                        <option value="{{ $district->id }}">{{ $district->name }}</option>
-                                    @endforeach
-                                </x-forms.SelectInput>
+                                @livewire('dependent-dropdown')
 
-                                <!-- Local Body Dropdown -->
-                                <x-forms.SelectInput label="Local Body" id="localbody_id" name="localbody_id">
-                                    <option value="">Select Local Body</option>
-                                    @foreach ($localbodies as $localbody)
-                                        <option value="{{ $localbody->id }}">{{ $localbody->name }}</option>
-                                    @endforeach
-                                </x-forms.SelectInput>
+                                <x-forms.TextInput label="Ward" name="ward_no" min='1' type="number" />
 
-                                <x-forms.TextInput label="Ward" id="ward_no" name="ward_no"
-                                    placeholder="Enter ward no." />
                                 <x-forms.TextInput label="Village " id="village" name="village"
                                     placeholder="Enter Village" />
+
                                 <x-forms.TextInput label="Tole" id="tole" name="tole" placeholder="Enter Tole" />
 
                             </div>

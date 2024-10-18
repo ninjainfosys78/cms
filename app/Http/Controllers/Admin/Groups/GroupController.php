@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers\Admin\Groups;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\Groups\Group\StoreGroupRequest;
-use App\Models\Address\District;
-use App\Models\Address\LocalBody;
-use App\Models\Address\Province;
-use App\Models\Farmers\Farmer;
 use App\Models\Groups\Group;
 use Illuminate\Http\Request;
+use App\Models\Farmers\Farmer;
+use App\Models\Address\District;
+use App\Models\Address\Province;
+use App\Models\Address\LocalBody;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\Groups\Group\StoreGroupRequest;
 
 class GroupController extends Controller
 {

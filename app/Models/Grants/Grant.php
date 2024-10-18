@@ -2,22 +2,21 @@
 
 namespace App\Models\Grants;
 
+use App\Models\User;
+use App\Traits\GetAllColumns;
 use App\Models\Address\District;
-use App\Models\Address\LocalBody;
 use App\Models\Address\Province;
+use App\Traits\QueryFilterTrait;
+use App\Models\Address\LocalBody;
 use App\Models\Setting\fisicalYear;
 use App\Models\Setting\GrantOffice;
 use App\Models\Setting\GrantProgram;
 use App\Models\Setting\Types\GrantType;
-use App\Models\Setting\Types\GrantType as TypesGrantType;
-use App\Models\User;
-use App\Traits\GetAllColumns;
-use App\Traits\QueryFilterTrait;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Grant extends Model
 {

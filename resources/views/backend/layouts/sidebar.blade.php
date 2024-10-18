@@ -30,14 +30,6 @@
                     <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
                     <span class="hide-menu">UI COMPONENTS</span>
                 </li>
-                <li class="sidebar-item">
-                    <a class="sidebar-link" href="./ui-buttons.html" aria-expanded="false">
-                        <span>
-                            <i class="ti ti-article"></i>
-                        </span>
-                        <span class="hide-menu">Buttons</span>
-                    </a>
-                </li>
 
                 <li class="sidebar-item">
                     <a class="sidebar-link flex justify-between items-center cursor-pointer" aria-expanded="false"
@@ -205,9 +197,14 @@
                                 <i class="ti ti-chevron-down"></i>
                             </a>
                             <ul id="typesDropdown" class="ml-6 mt-2 space-y-2 hidden">
-                                <li>
+                                {{-- <li>
                                     <a class="sidebar-link" href="{{ route('admin.affiliationType.index') }}">
                                         <i class="ti ti-affiliate"></i> <span>Affiliation Type</span>
+                                    </a>
+                                </li> --}}
+                                <li>
+                                    <a class="sidebar-link" href="{{ route('admin.affiliation.index') }}">
+                                        <i class="ti ti-affiliate"></i> <span>Affiliation</span>
                                     </a>
                                 </li>
                                 <li>
