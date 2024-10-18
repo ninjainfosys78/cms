@@ -104,7 +104,21 @@
                                     name="affiliation_id"
                                     :options="$affiliationTypes"
                                 />
-                                @livewire('dependent-dropdown')
+                                {{-- @livewire('dependent-dropdown') --}}
+                                <livewire:DependentDropdown
+                                />
+                                <x-forms.TextInput
+                                    label="Ward"
+                                    id="ward"
+                                    name="ward"
+                                    placeholder="Enter ward"
+                                />
+                                <x-forms.TextInput
+                                    label="Village"
+                                    id="village"
+                                    name="village"
+                                    placeholder="Enter village"
+                                />
                             </div>
                             {{-- <div class="">
                                 <livewire:DependentDropdown />

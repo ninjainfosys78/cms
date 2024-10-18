@@ -10,6 +10,7 @@ use App\Models\Cooperatives\Cooperative;
 use App\Models\Setting\Types\Affiliation;
 use App\Models\Setting\Types\CooperativeType;
 use App\Http\Requests\Cooperatives\Cooperative\StoreCooperativeRequest;
+use App\Http\Requests\Cooperatives\Cooperative\UpdateCooperativeRequest;
 
 class CooperativeController extends Controller
 {
@@ -42,32 +43,29 @@ class CooperativeController extends Controller
         // dd($request);
         Cooperative::create($request->validated()+["user_id"=>Auth::user()->id]);
         toast('Cooperative created Successfully','success');
-        return to_route('admin.cooperative.index');
+        return back();
 
     }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Cooperative $cooperative)
-    {
-        //
-    }
-
     /**
      * Show the form for editing the specified resource.
      */
     public function edit(Cooperative $cooperative)
     {
-        //
+        $options0 = Affiliation::all();
+        $affiliationTypes = $options0->pluck('id')->toArray();
+        $options1 = CooperativeType::all();
+        $cooperativeTypes = $options1->pluck('title','id')->toArray();
+        return view('admin.cooperatives.cooperative.edit',compact('cooperative','cooperativeTypes','affiliationTypes'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Cooperative $cooperative)
+    public function update(UpdateCooperativeRequest $request, Cooperative $cooperative)
     {
-        //
+        $cooperative->update($request->validated());
+        toast('Cooperative updated successfully','success');
+        return to_route('admin.cooperative.index');
     }
 
     /**
@@ -75,6 +73,8 @@ class CooperativeController extends Controller
      */
     public function destroy(Cooperative $cooperative)
     {
-        //
+        $cooperative->delete();
+        toast('Cooperative updated successfully','success');
+        return back();
     }
 }
