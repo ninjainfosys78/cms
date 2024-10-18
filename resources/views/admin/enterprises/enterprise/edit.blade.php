@@ -76,7 +76,7 @@
                                     />
 
                                 <livewire:dependent-dropdown
-                                :selectedProvince="$enterprise->privince_id ?? null"
+                                :selectedProvince="$enterprise->province_id ?? null"
                                 :selectedDistrict="$enterprise->district_id ?? null"
                                 :selectedLocalBody="$enterprise->local_body_id ?? null"
                                 />
