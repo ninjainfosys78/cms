@@ -93,10 +93,8 @@
                                         </td>
                                         <td class="border-b border-gray-200 gap-2 flex">
                                             <a href="{{ route('admin.cooperativePerson.edit', $cooperativePerson) }}"><i
-                                                    class="ti ti-edit text-[18px] text-white hover:bg-blue-500 bg-green-500 p-2 rounded-full"></i></a>
-                                            <a href=""><i class=""></i></a>
-
-
+                                                class="ti ti-edit text-[18px] text-white hover:bg-blue-500 bg-green-500 p-2 rounded-full"></i>
+                                            </a>
                                             <form action="{{ route('admin.cooperative.destroy', $cooperativePerson) }}"
                                                 method="POST" class="inline-block">
                                                 @csrf

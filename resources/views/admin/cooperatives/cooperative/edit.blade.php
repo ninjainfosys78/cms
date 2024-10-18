@@ -58,9 +58,10 @@
                             </ul>
                         </div>
                     @endif
-                        <form class="flex flex-col gap-6" action="{{route('admin.fisicalYear.store')}}" method="POST"
+                        <form class="flex flex-col gap-6" action="{{route('admin.cooperative.update',$cooperative)}}" method="POST"
                               enctype="multipart/form-data">
                             @csrf
+                            @method('PUT')
                             <div class="grid grid-cols-2 gap-4">
                                 <x-forms.TextInput
                                     label="Name"
@@ -81,40 +82,64 @@
                                     id="registration_no"
                                     name="registration_no"
                                     placeholder="Enter registration no"
-                                    value="{{ old('name',$cooperative->registration_no) }}"
+                                    value="{{ old('registration_no',$cooperative->registration_no) }}"
                                 />
                                 <x-forms.TextInput
                                     label="Registration Date"
                                     id="registration_date"
                                     name="registration_date"
                                     placeholder="Enter registration date"
-                                    value="{{ old('name',$cooperative->registration_date) }}"
+                                    value="{{ old('registration_date',$cooperative->registration_date) }}"
                                 />
                                 <x-forms.TextInput
                                     label="Vat/Pan"
                                     id="vat_pan"
                                     name="vat_pan"
                                     placeholder="Enter vat/pan"
-                                    value="{{ old('name',$cooperative->vat_pan) }}"
+                                    value="{{ old('vat_pan',$cooperative->vat_pan) }}"
                                 />
                                 <x-forms.TextInput
                                     label="Objective"
                                     id="objective"
                                     name="objective"
                                     placeholder="Enter objective"
-                                    value="{{ old('name',$cooperative->objective) }}"
+                                    value="{{ old('objective',$cooperative->objective) }}"
                                 />
                                 <x-forms.TextInput
                                     label="Affiliation ID"
                                     id="affiliation_id"
                                     name="affiliation_id"
                                     placeholder="Enter affiliation id"
-                                    value="{{ old('name',$cooperative->affiliation_id) }}"
+                                    value="{{ old('affiliation_id',$cooperative->affiliation_id) }}"
                                 />
                                 <livewire:dependent-dropdown
-                                :selectedProvince="$cooperative->province_id ?? null"
-                                :selectedDistrict="$cooperative->district_id ?? null"
-                                :selectedLocalBody="$cooperative->local_body_id ?? null"/>
+                                    :selectedProvince="$cooperative->province_id ?? null"
+                                    :selectedDistrict="$cooperative->district_id ?? null"
+                                    :selectedLocalBody="$cooperative->local_body_id ?? null"
+                                />
+
+                                <x-forms.TextInput
+                                    label="Ward"
+                                    {{-- type="number" --}}
+                                    id="ward_no"
+                                    name="ward_no"
+                                    placeholder="Enter ward no"
+                                    value="{{ old('ward_no',$cooperative->ward_no) }}"
+                                />
+                                <x-forms.TextInput
+                                    label="Village"
+                                    id="village"
+                                    name="village"
+                                    placeholder="Enter village"
+                                    value="{{ old('village',$cooperative->village) }}"
+                                />
+                                <x-forms.TextInput
+                                    label="Tole"
+                                    id="tole"
+                                    name="tole"
+                                    placeholder="Enter tole"
+                                    value="{{ old('tole',$cooperative->tole) }}"
+                                />
                             </div>
                             <div class="col-md-12">
                                 <button type="submit" class="btn btn-sm btn-primary">

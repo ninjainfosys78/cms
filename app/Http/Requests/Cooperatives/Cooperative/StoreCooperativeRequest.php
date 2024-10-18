@@ -3,7 +3,6 @@
 namespace App\Http\Requests\Cooperatives\Cooperative;
 
 use Illuminate\Validation\Rule;
-use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreCooperativeRequest extends FormRequest
@@ -25,8 +24,6 @@ class StoreCooperativeRequest extends FormRequest
             'ward_no' => ['required', 'integer'],
             'village' => ['nullable'],
             'tole' => ['nullable'],
-            'farmers' => ['nullable', 'array'],
-            'farmers.*' => [Rule::exists('farmers', 'id')->withoutTrashed()],
         ];
     }
 }

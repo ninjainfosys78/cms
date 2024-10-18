@@ -3,15 +3,10 @@
 namespace App\Http\Requests\Api\V1\Farmers\Farmer;
 
 use Illuminate\Validation\Rule;
-use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateFarmerRequest extends FormRequest
 {
-    public function authorize(): bool
-    {
-        return Gate::allows('farmer_edit');
-    }
 
     public function rules(): array
     {

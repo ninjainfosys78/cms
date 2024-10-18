@@ -3,15 +3,10 @@
 namespace App\Http\Requests\Cooperatives\Cooperative;
 
 use Illuminate\Validation\Rule;
-use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateCooperativeRequest extends FormRequest
 {
-    public function authorize(): bool
-    {
-        return Gate::allows('cooperative_create');
-    }
 
     public function rules(): array
     {
@@ -29,8 +24,6 @@ class UpdateCooperativeRequest extends FormRequest
             'ward_no' => ['required', 'integer'],
             'village' => ['nullable'],
             'tole' => ['nullable'],
-            'farmers' => ['nullable', 'array'],
-            'farmers.*' => [Rule::exists('farmers', 'id')->withoutTrashed()],
         ];
     }
 }

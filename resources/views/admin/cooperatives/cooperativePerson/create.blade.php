@@ -57,7 +57,7 @@
                                     label="Cooperative"
                                     id="cooperative_id"
                                     name="cooperative_id"
-                                    :options="$cooperatives"
+                                    :options="$cooperativeTypes"
                                 />
                                 <x-forms.SelectInput
                                     label="Fisical Year"

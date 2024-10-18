@@ -49,51 +49,59 @@
                 <h6 class="text-lg text-gray-600 font-semibold">Forms</h6>
                 <div class="card">
                     <div class="card-body">
-                        <form class="flex flex-col gap-6" action="{{route('admin.cooperativePerson.store')}}" method="POST"
+                        <form class="flex flex-col gap-6" action="{{route('admin.cooperativePerson.update',$cooperativePerson)}}" method="POST"
                               enctype="multipart/form-data">
                             @csrf
+                            @method('PUT')
                             <div class="grid grid-cols-2 gap-4">
                                 <x-forms.SelectInput
                                     label="Cooperative"
                                     id="cooperative_id"
                                     name="cooperative_id"
-                                    :options="$cooperatives"
-                                />
-                                <x-forms.SelectInput
+                                    :options="$cooperativeTypes"
+                                    selected="{{ $cooperativePerson->cooperative_id }}"
+                                    />
+                                    <x-forms.SelectInput
                                     label="Fisical Year"
                                     id="fisical_year_id"
                                     name="fisical_year_id"
                                     :options="$fisicalYears"
+                                    selected="{{ $cooperativePerson->fisical_year_id }}"
                                 />
                                 <x-forms.TextInput
                                     label="Name"
                                     id="name"
                                     name="name"
                                     placeholder="Enter name"
+                                    value="{{ old('name',$cooperativePerson->name) }}"
                                 />
                                 <x-forms.TextInput
                                     label="Phone"
                                     id="phone"
                                     name="phone"
                                     placeholder="Enter phone"
+                                    value="{{ old('phone',$cooperativePerson->phone) }}"
                                 />
                                 <x-forms.TextInput
                                     label="Email"
                                     id="email"
                                     name="email"
                                     placeholder="Enter email"
+                                    value="{{ old('email',$cooperativePerson->email) }}"
                                 />
                                 <x-forms.TextInput
                                     label="Designation"
                                     id="designation"
                                     name="designation"
                                     placeholder="Enter designation"
+                                    value="{{ old('designation',$cooperativePerson->designation) }}"
                                 />
                                 <x-forms.TextInput
                                     label="Position"
                                     id="position"
                                     name="position"
                                     placeholder="Enter position"
+                                    value="{{ old('position',$cooperativePerson->position) }}"
                                 />
                             </div>
 

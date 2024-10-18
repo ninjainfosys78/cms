@@ -110,6 +110,8 @@
                                 />
                                 <x-forms.TextInput
                                     label="Ward"
+                                    type="number"
+                                    min="1"
                                     id="ward"
                                     name="ward"
                                     placeholder="Enter ward"
@@ -119,6 +121,12 @@
                                     id="village"
                                     name="village"
                                     placeholder="Enter village"
+                                />
+                                <x-forms.TextInput
+                                    label="Tole"
+                                    id="tole"
+                                    name="tole"
+                                    placeholder="Enter tole"
                                 />
                             </div>
                             {{-- <div class="">

@@ -29,7 +29,7 @@ class CooperativePersonController extends Controller
     public function create()
     {
         $options1 = Cooperative::all();
-        $cooperatives = $options1->pluck('title','id')->toArray();
+        $cooperatives = $options1->pluck('name')->toArray();
 
         $years = FisicalYear::all();
         $fisicalYears = $years->pluck('year','id')->toArray();
@@ -61,9 +61,11 @@ class CooperativePersonController extends Controller
      */
     public function edit(CooperativePerson $cooperativePerson)
     {
+        $options1 = CooperativeType::all();
+        $cooperativeTypes= $options1->pluck('title','id')->toArray();
         $years = FisicalYear::all();
         $fisicalYears = $years->pluck('year','id')->toArray();
-        return view('admin.cooperatives.cooperativePerson.edit',compact('cooperativePerson','fisicalYears'));
+        return view('admin.cooperatives.cooperativePerson.edit',compact('cooperativePerson','fisicalYears','cooperativeTypes'));
     }
 
     /**
@@ -81,6 +83,8 @@ class CooperativePersonController extends Controller
      */
     public function destroy(CooperativePerson $cooperativePerson)
     {
-        //
+        $cooperativePerson->delete();
+        toast('Cooperative Person deleted Successfully','success');
+        return back();
     }
 }

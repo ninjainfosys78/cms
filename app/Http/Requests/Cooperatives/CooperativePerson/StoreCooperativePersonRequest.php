@@ -3,15 +3,10 @@
 namespace App\Http\Requests\Cooperatives\CooperativePerson;
 
 use Illuminate\Validation\Rule;
-use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreCooperativePersonRequest extends FormRequest
 {
-    public function authorize(): bool
-    {
-        return true;
-    }
 
     public function rules(): array
     {
