@@ -39,8 +39,8 @@
                 </ul>
                 <div class="flex items-center gap-4">
                     <a href="{{ route('admin.enterprise.index') }}"
-                        class="btn font-medium bg-blue-600 hover:bg-red-600 py-1 text-white"
-                        aria-current="page">Enterprises List</a>
+                        class="btn font-medium bg-blue-600 hover:bg-red-600 py-1 text-white" aria-current="page">Enterprises
+                        List</a>
                 </div>
             </nav>
         </div>
@@ -50,28 +50,32 @@
                 <div class="card">
                     <div class="card-body">
                         @if ($errors->any())
-                                    <div class="alert alert-danger">
-                                        <ul>
-                                            @foreach ($errors->all() as $error)
-                                                <li>{{ $error }}</li>
-                                            @endforeach
-                                        </ul>
-                                    </div>
-                                @endif
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
                         <form class="flex flex-col gap-6" action="{{ route('admin.enterprise.store') }}" method="POST"
                             enctype="multipart/form-data">
                             @csrf
                             <div class="grid grid-cols-2 gap-4">
-                                <x-forms.SelectInput label="Enterprise Type" id="enterprise_type_id" name="enterprise_type_id"
-                                    :options="$enterpriseTypes" />
+                                <x-forms.SelectInput label="Enterprise Type" id="enterprise_type_id"
+                                    name="enterprise_type_id" :options="$enterpriseTypes" />
                                 <x-forms.TextInput label="Enterprise Name" id="name" name="name"
                                     placeholder="Enter name" />
                                 <x-forms.TextInput label="Vat Pan" id="vat_pan" name="vat_pan"
                                     placeholder="Enter vat pan" />
 
                                 @livewire('dependent-dropdown')
+
+                                <x-forms.TextInput label="Ward" name="ward_no" min='1' type="number" />
+
                                 <x-forms.TextInput label="Village " id="village" name="village"
                                     placeholder="Enter Village" />
+
                                 <x-forms.TextInput label="Tole" id="tole" name="tole" placeholder="Enter Tole" />
 
                             </div>
