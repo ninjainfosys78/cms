@@ -81,7 +81,7 @@ class Farmer extends Model
     {
         return $this->attributes['photo']
             ? asset('storage/' . $this->attributes['photo'])
-            : asset('images/default.png');
+            : asset('assets/default_user.jpg');
     }
 
     /**
