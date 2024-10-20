@@ -3,10 +3,13 @@
 namespace App\Http\Controllers\Admin\Grants;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Grants\GrantDetail\StoreGrantDetailRequest;
+use App\Http\Requests\Grants\GrantDetail\UpdateGrantDetailRequest;
 use App\Models\Grants\Grant;
 use App\Models\Grants\GrantDetail;
 use App\Models\Setting\FisicalYear;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class GrantDetailController extends Controller
 {
@@ -24,20 +27,30 @@ class GrantDetailController extends Controller
      */
     public function create()
     {
-        // $fisicalYears = FisicalYear::all();
-        // $options = $fisicalYears->pluck('year','id')->toArray();
-        // $grants = Grant::all();
-        // $grantOptions =
+        $option= Grant::with('grantProgram')->get();
+        $grant= $option->pluck('grantProgram.Program_name','id')->toArray();
 
-        return view('admin.grants.grantDetail.create');
+        $fisicalYears = FisicalYear::all();
+        $options = $fisicalYears->pluck('year','id')->toArray();
+
+        $modelTypes = [
+            'App\Models\Enterprises' => 'Enterprises',
+            'App\Models\Farmers' => 'Farmers',
+            'App\Models\Grants' => 'Grants',
+            'App\Models\Groups' => 'Groups',
+        ];
+//  dd($modelTypes);
+        return view('admin.grants.grantDetail.create',compact('options','grant','modelTypes'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreGrantDetailRequest $request)
     {
-        //
+        GrantDetail::create($request->validated()+ ['user_id'=>Auth::user()->id]);
+        toast('Grant Detail added Successfully','success');
+        return to_route('admin.grantDetail.create');
     }
 
     /**
@@ -59,7 +72,7 @@ class GrantDetailController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, GrantDetail $grantDetail)
+    public function update(UpdateGrantDetailRequest $request, GrantDetail $grantDetail)
     {
         //
     }
@@ -69,6 +82,8 @@ class GrantDetailController extends Controller
      */
     public function destroy(GrantDetail $grantDetail)
     {
-        //
+        $grantDetail->delete();
+        toast('Grant Detail deleted successfully','success');
+        return back();
     }
 }

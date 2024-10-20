@@ -24,7 +24,7 @@ class StoreGrantDetailRequest extends FormRequest
     {
         return [
             'grant_id' => ['required', Rule::exists('grants', 'id')->withoutTrashed()],
-            'model_type' => ['required', Rule::in(config('enums.model_types'))],
+            'model_type' => ['required'],
             'model_id' => ['required', 'integer'],
             'personal_investment' => ['required', 'numeric'],
             'is_old' => ['nullable', 'boolean'],

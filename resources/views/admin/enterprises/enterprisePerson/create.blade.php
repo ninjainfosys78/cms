@@ -87,7 +87,6 @@
                                     placeholder="Enter  Position"
                                     min="1"
                                 />
-                                {{-- {{$options}} --}}
                                 <x-forms.SelectInput
                                 label="Select Fisical Year"
                                 id="fisical_year_id"
