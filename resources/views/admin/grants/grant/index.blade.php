@@ -54,18 +54,25 @@
                             <thead class="text-dark fs-4">
                                 <tr class="border border-1">
                                     <th>
-                                        <h6 class="fw-semibold mb-0">S.No.</h6>
+                                        <h6 class="fw-semibold">S.No.</h6>
                                     </th>
 
-                                    <th class="border-right-1">
-                                        <h6 class="fw-semibold mb-0">Grant Type</h6>
+                                    <th>
+                                        <h6 class="fw-semibold">Grant Type</h6>
+                                    </th>
+                                    <th>
+                                        <h6 class="fw-semibold">Grant Program</h6>
                                     </th>
 
-                                    <th class="border-right-1">
-                                        <h6 class="fw-semibold mb-0">Grant Amount</h6>
+                                    <th>
+                                        <h6 class="fw-semibold">Grant Amount</h6>
                                     </th>
 
-                                    <th class="border-bottom-0">
+                                    <th>
+                                        <h6 class="fw-semibold">Grant For</h6>
+                                    </th>
+
+                                    <th>
                                         <h6 class="fw-semibold mb-0">Action</h6>
                                     </th>
                                 </tr>
@@ -83,7 +90,13 @@
                                         </td>
 
                                         <td class="border-b border-gray-200">
+                                            <h6 class=" mb-1">{{ $grant->grantProgram->Program_name ?? '' }}</h6>
+                                        </td>
+                                        <td class="border-b border-gray-200">
                                             <h6 class=" mb-1">{{ $grant->grant_amount ?? '' }}</h6>
+                                        </td>
+                                        <td class="border-b border-gray-200">
+                                            <h6 class=" mb-1">{{ $grant->grant_for ?? '' }}</h6>
                                         </td>
 
                                         <td class="border-b border-gray-200 gap-2 flex">

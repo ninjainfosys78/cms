@@ -19,7 +19,7 @@ class GrantController extends Controller
      */
     public function index()
     {
-        $grants = Grant::with('grantType')->get();
+        $grants = Grant::with('grantType','grantProgram')->get();
         return view('admin.grants.grant.index',compact('grants'));
     }
 

@@ -57,125 +57,132 @@
                                         </ul>
                                     </div>
                                 @endif
-                        <form class="flex flex-col gap-6" action="{{route('admin.farmer.store')}}" method="POST"
+                        <form class="flex flex-col gap-6" action="{{route('admin.farmer.update',$farmer)}}" method="POST"
                               enctype="multipart/form-data">
                             @csrf
+                            @method('PUT')
                             <div class="grid grid-cols-2 gap-4">
                                 <x-forms.TextInput
                                     label="First Name"
                                     id="first_name"
                                     name="first_name"
                                     placeholder="Enter first name"
-                                    value = "{{ old('first_name',$farmer->first_name) }}"
+                                    value="{{ old('first_name',$farmer->first_name )}}"
                                 />
                                 <x-forms.TextInput
                                     label="Middle Name"
                                     id="middle_name"
                                     name="middle_name"
                                     placeholder="Enter middle name"
-                                    value = "{{ old('middle_name',$farmer->middle_name) }}"
+                                    value="{{ old('middle_name',$farmer->middle_name) }}"
                                 />
                                 <x-forms.TextInput
                                     label="Last Name"
                                     id="last_name"
                                     name="last_name"
                                     placeholder="Enter last name"
-                                    value = "{{ old('last_name',$farmer->last_name) }}"
+                                    value="{{ old('last_name',$farmer->last_name )}}"
                                 />
                                 <x-forms.PhotoInput
-                                label="Photo"
-                                id="photo"
-                                name="photo"
+                                    label="Photo"
+                                    id="photo"
+                                    name="photo"
+                                    img="{{ $farmer->photo }}"
                                 />
                                 <x-forms.SelectInput
                                     label="Gender"
                                     id="gender"
                                     name="gender"
                                     :options="\App\Enums\Gender::cases()"
+                                    selected="{{ $farmer->gender }}"
                                 />
 
-                                {{-- <x-forms.SelectInput
-                                    label="Gender"
-                                    id="gender"
-                                    name="gender"
-                                /> --}}
                                 <x-forms.SelectInput
                                     label="Relationship Status"
                                     id="relationship_status"
                                     name="relationship_status"
                                     :options="\App\Enums\RelationshipStatus::cases()"
+                                    selected="{{ $farmer->relationship_status }}"
                                 />
                                 <x-forms.TextInput
                                     label="Spouse Name"
                                     id="spouse_name"
                                     name="spouse_name"
                                     placeholder="Enter spouse name"
+                                    value="{{ old('spouse_name',$farmer->spouse_name) }}"
                                 />
                                 <x-forms.TextInput
                                     label="Father Name"
                                     id="father_name"
                                     name="father_name"
                                     placeholder="Enter Father name"
+                                    value="{{ old('father_name',$farmer->father_name) }}"
                                 />
                                 <x-forms.TextInput
                                     label="Grandfather Name"
                                     id="grandfather_name"
                                     name="grandfather_name"
                                     placeholder="Enter Grandfather name"
+                                    value="{{ old('grandfather_name',$farmer->grandfather_name) }}"
                                 /><x-forms.TextInput
                                     label="Citizenship Number"
                                     id="citizenship_no"
                                     name="citizenship_no"
                                     placeholder="Enter citizenship number"
+                                    value="{{ old('citizenship_no',$farmer->citizenship_no) }}"
                                 />
                                 <x-forms.TextInput
                                     label="Farmer ID Card Number"
                                     id="farmer_id_card_no"
                                     name="farmer_id_card_no"
                                     placeholder="Enter id card number"
+                                    value="{{ old('farmer_id_card_no',$farmer->farmer_id_card_no) }}"
                                 />
                                 <x-forms.TextInput
                                     label="National ID Card Number"
                                     id="national_id_card_no"
                                     name="national_id_card_no"
                                     placeholder="Enter national id card number"
+                                    value="{{ old('national_id_card_no',$farmer->national_id_card_no) }}"
                                 />
                                 <x-forms.TextInput
                                     label="Phone Number"
                                     id="phone_no"
+                                    type="tel"
                                     name="phone_no"
                                     placeholder="Enter Phone number"
+                                    value="{{ old('phone_no',$farmer->phone_no)}}"
                                 />
-                                <x-forms.SelectInput
-                                    label="Relationship Status"
-                                    id="relationship_status"
-                                    name="relationship_status"
-                                    :options="$options"
-                                />
+
                                 <livewire:dependent-dropdown
-                                    :selectedProvince="$cooperative->province_id ?? null"
-                                    :selectedDistrict="$cooperative->district_id ?? null"
-                                    :selectedLocalBody="$cooperative->local_body_id ?? null"
+                                    :selectedProvince="$farmer->province_id ?? null"
+                                    :selectedDistrict="$farmer->district_id ?? null"
+                                    :selectedLocalBody="$farmer->local_body_id ?? null"
                                 />
 
                                 <x-forms.TextInput
                                     label="Ward No"
                                     id="ward_no"
+                                    type="number"
+                                    min='1'
                                     name="ward_no"
                                     placeholder="Enter Ward No"
+                                    value="{{ old('ward_no',$farmer->ward_no) }}"
                                 />
                                 <x-forms.TextInput
                                     label="Village"
                                     id="village"
                                     name="village"
                                     placeholder="Enter Village"
+                                    value="{{ old('village',$farmer->village) }}"
                                 />
                                 <x-forms.TextInput
                                     label="Tole"
                                     id="tole"
                                     name="tole"
                                     placeholder="Enter tole"
-                                />
+                                    value="{{ old('tole',$farmer->tole) }}"
+  )                              />
 
 
                             </div>
