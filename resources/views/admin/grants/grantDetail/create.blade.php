@@ -78,7 +78,7 @@
                                     id="model_type"
                                     name="model_type"
                                     :options="$modelTypes"
-                                    onchange="fetchModelIds(this.value)"
+                                    onchange="this.form.submit()"
                                 />
 
                                 <!-- Model ID Selection -->
@@ -86,8 +86,8 @@
                                     label="Model"
                                     id="model_id"
                                     name="model_id"
-                                    placeholder="Select Model"
-                                />
+                                    :options="$model_id"
+                                    />
 
                                 <x-forms.TextInput
                                  type="number"
@@ -128,7 +128,9 @@
                                 type="number"
                                 label="Ward"
                                 id="ward_no"
-                                name="ward_no"/>
+                                name="ward_no"
+                                placeholder="Enter ward"
+                                />
 
                                 <x-forms.TextInput
                                 label="Vilage"

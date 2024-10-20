@@ -25,7 +25,7 @@ class GrantDetailController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
         $option= Grant::with('grantProgram')->get();
         $grant= $option->pluck('grantProgram.Program_name','id')->toArray();
@@ -39,8 +39,18 @@ class GrantDetailController extends Controller
             'App\Models\Grants' => 'Grants',
             'App\Models\Groups' => 'Groups',
         ];
+
+        $model_id = [];
+
+    // Check if 'model_type' is selected
+    if ($request->has('model_type') && array_key_exists($request->model_type, $modelTypes)) {
+        $modelClass = $request->model_type;
+
+        // Fetch model IDs and names (adjust fields as necessary)
+        $model_id = $modelClass::pluck('name', 'id')->toArray();
+    }
 //  dd($modelTypes);
-        return view('admin.grants.grantDetail.create',compact('options','grant','modelTypes'));
+        return view('admin.grants.grantDetail.create',compact('options','grant','modelTypes','model_id'));
     }
 
     /**
