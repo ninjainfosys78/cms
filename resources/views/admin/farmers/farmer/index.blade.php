@@ -82,7 +82,7 @@
                                             <h6>{{ $farmer->unique_id ?? '' }}</h6>
                                         </td>
                                         <td>
-                                            <img class="mb-1 w-20"src="{{ $farmer->photo ?? '' }}"/>
+                                            <img class="mb-1 w-20"src="{{ $farmer->photo ?? '' }}" alt="Farmer's Photo"/>
                                         </td>
                                         <td>
                                             <h6>{{ $farmer->name ?? '' }}</h6>

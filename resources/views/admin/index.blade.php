@@ -179,19 +179,19 @@
                         <table class="table text-nowrap mb-0 align-middle">
                             <thead class="text-dark fs-4">
                                 <tr>
-                                    <th class="border-bottom-0">
+                                    <th">
                                         <h6 class="fw-semibold mb-0">Id</h6>
                                     </th>
-                                    <th class="border-bottom-0">
+                                    <th">
                                         <h6 class="fw-semibold mb-0">Assigned</h6>
                                     </th>
-                                    <th class="border-bottom-0">
+                                    <th">
                                         <h6 class="fw-semibold mb-0">Name</h6>
                                     </th>
-                                    <th class="border-bottom-0">
+                                    <th">
                                         <h6 class="fw-semibold mb-0">Priority</h6>
                                     </th>
-                                    <th class="border-bottom-0">
+                                    <th">
                                         <h6 class="fw-semibold mb-0">Budget</h6>
                                     </th>
                                 </tr>
