@@ -2,9 +2,9 @@
 
 namespace App\Models\Setting;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class GrantProgram extends Model
 {
@@ -12,7 +12,7 @@ class GrantProgram extends Model
 
     protected $fillable = [
 
-        'program_name',
+        'Program_name',
     ];
 
 }

@@ -24,7 +24,7 @@ class UpdateGrantDetailRequest extends FormRequest
     {
         return [
             'grant_id' => ['nullable', Rule::exists('grants', 'id')->withoutTrashed()],
-            'model_type' => ['nullable', Rule::in(config('enums.model_types'))],
+            'model_type' => ['nullable'],
             'model_id' => ['nullable', 'integer'],
             'personal_investment' => ['nullable', 'numeric'],
             'is_old' => ['nullable', 'boolean'],

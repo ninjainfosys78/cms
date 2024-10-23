@@ -82,9 +82,9 @@ class Grant extends Model
         return $query;
     }
 
-    public function grantProgram(): BelongsTo
+    public function grantProgram()
     {
-        return $this->belongsTo(GrantProgram::class);
+        return $this->belongsTo(GrantProgram::class, 'grant_program_id');
     }
 
     public function grantOffice(): BelongsTo

@@ -39,7 +39,7 @@
                     </li>
                 </ul>
                 <div class="flex items-center gap-4">
-                    <a href="{{ route('admin.grant.index') }}"
+                    <a href="{{ route('admin.grantDetail.index') }}"
                         class="btn font-medium bg-blue-600 hover:bg-red-600 py-1 text-white" aria-current="page">Grant Detail List</a>
                 </div>
             </nav>
@@ -59,35 +59,19 @@
                         </div>
                     @endif
                         <form class="flex flex-col gap-6" action="{{route('admin.grantDetail.store')}}" method="POST"
-                              enctype="multipart/form-data">
+                            enctype="multipart/form-data">
                             @csrf
                             <div class="grid grid-cols-2 gap-4">
                                 <x-forms.SelectInput
                                 type="number"
-                                label="Grant"
+                                label="Grant ID"
                                 id="grant_id"
                                 name="grant_id"
                                 placeholder="Enter Grant"
                                 :options="$grant"
                                 />
 
-                                <!-- Model Type Selection -->
-                                    <x-forms.SelectInput
-                                    type="text"
-                                    label="Model Type"
-                                    id="model_type"
-                                    name="model_type"
-                                    :options="$modelTypes"
-                                    onchange="this.form.submit()"
-                                />
-
-                                <!-- Model ID Selection -->
-                                <x-forms.SelectInput
-                                    label="Model"
-                                    id="model_id"
-                                    name="model_id"
-                                    :options="$modelIds"
-                                    />
+                                <livewire:grant-detail />
 
                                 <x-forms.TextInput
                                  type="number"
@@ -121,7 +105,7 @@
                             :selectedLocalBody="$grant->local_body_id ?? null"
                             />
 
-                            <div class="grid grid-cols-2 gap-4">
+                            {{-- <div class="grid grid-cols-2 gap-4"> --}}
 
 
                                 <x-forms.TextInput

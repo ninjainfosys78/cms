@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers\Admin\Grants;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\Grants\GrantDetail\StoreGrantDetailRequest;
-use App\Http\Requests\Grants\GrantDetail\UpdateGrantDetailRequest;
 use App\Models\Grants\Grant;
+use Illuminate\Http\Request;
 use App\Models\Grants\GrantDetail;
 use App\Models\Setting\FisicalYear;
-use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Models\Setting\GrantProgram;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\Grants\GrantDetail\StoreGrantDetailRequest;
+use App\Http\Requests\Grants\GrantDetail\UpdateGrantDetailRequest;
 
 class GrantDetailController extends Controller
 {
@@ -32,25 +33,9 @@ class GrantDetailController extends Controller
 
         $fisicalYears = FisicalYear::all();
         $options = $fisicalYears->pluck('year','id')->toArray();
+        // dd($grant);
 
-        $modelTypes = [
-            'App\Models\Enterprises' => 'Enterprises',
-            'App\Models\Farmers' => 'Farmers',
-            'App\Models\Cooperatives' => 'Cooperatives',
-            'App\Models\Groups' => 'Groups',
-        ];
-
-        $modelIds = [];
-
-        if ($request->has('model_type')) {
-            $modelType = $request->model_type;
-
-        if (array_key_exists($modelType, $modelTypes)) {
-            $modelIds = $modelType::pluck('name', 'id')->toArray(); // Adjust the field as necessary
-            }
-       }
-//  dd($modelTypes);
-        return view('admin.grants.grantDetail.create',compact('options','grant','modelTypes','modelIds'));
+        return view('admin.grants.grantDetail.create',compact('options','grant'));
     }
 
     /**
@@ -58,7 +43,7 @@ class GrantDetailController extends Controller
      */
     public function store(StoreGrantDetailRequest $request)
     {
-        GrantDetail::create($request->validated()+ ['user_id'=>Auth::user()->id]);
+        GrantDetail::create($request->validated());
         toast('Grant Detail added Successfully','success');
         return to_route('admin.grantDetail.create');
     }
@@ -76,7 +61,13 @@ class GrantDetailController extends Controller
      */
     public function edit(GrantDetail $grantDetail)
     {
-        //
+        $option= Grant::get();
+        $grant= $option->pluck('id')->toArray();
+
+        $fisicalYears = FisicalYear::all();
+        $options = $fisicalYears->pluck('year','id')->toArray();
+        // dd($grantDetail);
+        return view('admin.grants.grantDetail.edit',compact('grantDetail','options','grant'));
     }
 
     /**
