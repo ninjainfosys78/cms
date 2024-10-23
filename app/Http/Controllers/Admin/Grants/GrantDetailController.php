@@ -36,21 +36,21 @@ class GrantDetailController extends Controller
         $modelTypes = [
             'App\Models\Enterprises' => 'Enterprises',
             'App\Models\Farmers' => 'Farmers',
-            'App\Models\Grants' => 'Grants',
+            'App\Models\Cooperatives' => 'Cooperatives',
             'App\Models\Groups' => 'Groups',
         ];
 
-        $model_id = [];
+        $modelIds = [];
 
-    // Check if 'model_type' is selected
-    if ($request->has('model_type') && array_key_exists($request->model_type, $modelTypes)) {
-        $modelClass = $request->model_type;
+        if ($request->has('model_type')) {
+            $modelType = $request->model_type;
 
-        // Fetch model IDs and names (adjust fields as necessary)
-        $model_id = $modelClass::pluck('name', 'id')->toArray();
-    }
+        if (array_key_exists($modelType, $modelTypes)) {
+            $modelIds = $modelType::pluck('name', 'id')->toArray(); // Adjust the field as necessary
+            }
+       }
 //  dd($modelTypes);
-        return view('admin.grants.grantDetail.create',compact('options','grant','modelTypes','model_id'));
+        return view('admin.grants.grantDetail.create',compact('options','grant','modelTypes','modelIds'));
     }
 
     /**

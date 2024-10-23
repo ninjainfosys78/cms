@@ -86,7 +86,7 @@
                                     label="Model"
                                     id="model_id"
                                     name="model_id"
-                                    :options="$model_id"
+                                    :options="$modelIds"
                                     />
 
                                 <x-forms.TextInput
